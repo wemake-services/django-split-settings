@@ -22,5 +22,6 @@ setup(name='django-split-settings',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
+        'License :: OSI Approved :: BSD License',
     ]
 )
