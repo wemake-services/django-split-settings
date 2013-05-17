@@ -40,9 +40,9 @@ In the example, the files ``base.py`` and ``database.py`` are included
 in that order from the subdirectory called ``components/``.
 ``local_settings.py`` in the same directory is included if it exists.
 
-.. note:: The local context is passed on to each file, so each
-          following file can access and modify the settings declared
-          in the previous files.
+**Note:** The local context is passed on to each file, so each
+following file can access and modify the settings declared in the
+previous files.
 
 
 Advanced example
@@ -87,9 +87,9 @@ Finally, it tries to locate ``local_settings.py`` from the working
 directory (usually the project root directory, assuming that you
 called ``manage.py runserver`` from there).
 
-.. tip:: If you're using Apache and mod_wsgi, you can set the working
-         directory with the ``home`` option in the
-         ``WSGIDaemonProcess`` directive.
+**Tip**: If you're using Apache and mod_wsgi, you can set the working
+directory with the ``home`` option in the ``WSGIDaemonProcess``
+directive.
 
 
 Overriding settings
@@ -143,9 +143,9 @@ You can use wildcards in file paths::
 
     include(..., 'components/my_app/*.py', ...)
 
-.. note:: Note that files are included in the order that ``glob``
-          returns them, probably in the same order as what ``ls -U``
-          would list them. The files are NOT in alphabetical order.
+Note that files are included in the order that ``glob`` returns them,
+probably in the same order as what ``ls -U`` would list them. The
+files are NOT in alphabetical order.
 
 
 Changelog
