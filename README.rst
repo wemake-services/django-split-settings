@@ -10,7 +10,9 @@ and mark settings files as optional.
 Installation
 ============
 
-Install by using ``pip``::
+Install by using ``pip``:
+
+.. code-block:: bash
 
     pip install django-split-settings
 
@@ -24,7 +26,9 @@ that contains all the files.
 
 The `GitHub repository`_ contains an example app.
 
-Here's a minimal example::
+Here's a minimal example:
+
+.. code-block:: python
 
     from split_settings.tools import optional, include
     
@@ -51,7 +55,9 @@ Advanced example
 Here's an example of the new ``settings/__init__.py`` that also takes
 into consideration whether the user has supplied another settings
 module as a command line parameter.  It also offers two different ways
-to override settings in the local installation::
+to override settings in the local installation:
+
+.. code-block:: python
 
     from split_settings.tools import optional, include
     import os
@@ -98,7 +104,9 @@ Overriding settings
 Files on the inclusion list can override and modify the settings
 configured in the previous files. For example:
 
-``components/base.py``::
+``components/base.py``:
+
+.. code-block:: python
 
     DEBUG = False
     TEMPLATE_DEBUG = DEBUG
@@ -122,7 +130,9 @@ configured in the previous files. For example:
         }
     }
 
-``local_settings.py``::
+``local_settings.py``:
+
+.. code-block:: python
 
     # Use debug mode locally
     DEBUG = True
@@ -139,7 +149,9 @@ configured in the previous files. For example:
 Tips and tricks
 ===============
 
-You can use wildcards in file paths::
+You can use wildcards in file paths:
+
+.. code-block:: python
 
     include(..., 'components/my_app/*.py', ...)
 
