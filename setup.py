@@ -14,5 +14,13 @@ setup(name='django-split-settings',
     packages=find_packages(exclude=['example']),
     include_package_data=True,
     setup_requires=['setuptools-git>=0.4.2'],
-    zip_safe=False
+    zip_safe=False,
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Internet :: WWW/HTTP',
+    ]
 )
