@@ -5,9 +5,10 @@ from split_settings import __version__
 
 setup(name='django-split-settings',
     version=__version__,
-    description='Organize Django settings into multiple files and directories. '
-                'Easily override and modify settings. Use wildcards and optional '
-                'settings files.',
+    description=(
+        'Organize Django settings into multiple files and directories. '
+        'Easily override and modify settings. Use wildcards and optional '
+        'settings files.'),
     author='Visa Kopu, Antti Kaihola (2General Ltd.)',
     author_email='visa@2general.com',
     url='http://github.com/2general/django-split-settings',
