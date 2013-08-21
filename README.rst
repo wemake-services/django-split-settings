@@ -163,6 +163,11 @@ files are NOT in alphabetical order.
 Changelog
 =========
 
+0.1.1
+-----
+
+* Fixed `issue #1`_: now works with Gunicorn, too
+
 0.1.0
 -----
 
@@ -170,3 +175,4 @@ Changelog
 
 
 .. _`GitHub repository`: http://github.com/2general/django-split-settings
+.. _`issue #1`: https://github.com/2general/django-split-settings/issues/1
