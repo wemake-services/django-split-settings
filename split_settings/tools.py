@@ -34,6 +34,7 @@ def include(*args, **kwargs):
         scope: The context for the settings, should always be ``locals()``
     Raises:
         IOError: if a required settings file is not found
+
     """
     scope = kwargs.pop("scope")
     including_file = scope.get('__included_file__',
@@ -43,7 +44,8 @@ def include(*args, **kwargs):
         saved_included_file = scope.get('__included_file__')
         pattern = os.path.join(confpath, conffile)
 
-        # find files per pattern, raise an error if not found (unless file is optional)
+        # find files per pattern, raise an error if not found (unless file is
+        # optional)
         files_to_include = glob.glob(pattern)
         if not files_to_include and not isinstance(conffile, optional):
             raise IOError('No such file: %s' % pattern)
@@ -52,8 +54,10 @@ def include(*args, **kwargs):
             scope['__included_file__'] = included_file
             execfile(included_file, {}, scope)
 
-            # add dummy modules to sys.modules to make runserver autoreload work with settings components
-            modulename = '_split_settings.%s' % conffile[:conffile.rfind('.')].replace('/', '.')
+            # add dummy modules to sys.modules to make runserver autoreload
+            # work with settings components
+            modulename = ('_split_settings.%s'
+                          % conffile[:conffile.rfind('.')].replace('/', '.'))
             module = types.ModuleType(modulename)
             module.__file__ = included_file
             sys.modules[modulename] = module
