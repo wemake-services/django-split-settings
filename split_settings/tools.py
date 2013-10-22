@@ -52,7 +52,7 @@ def include(*args, **kwargs):
 
         for included_file in files_to_include:
             scope['__included_file__'] = included_file
-            execfile(included_file, {}, scope)
+            exec(open(included_file).read(), {}, scope)
 
             # add dummy modules to sys.modules to make runserver autoreload
             # work with settings components
