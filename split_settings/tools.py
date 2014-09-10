@@ -53,12 +53,24 @@ def include(*args, **kwargs):
 
         for included_file in files_to_include:
             scope['__included_file__'] = included_file
-            execfile(included_file, {}, scope)
+
+            relative_path = conffile[:conffile.rfind('.')].replace('/', '.')
+
+            # check python version
+            if sys.version_info[0] < 3:
+                execfile(included_file, {}, scope)
+            else:
+                exec(
+                    compile(
+                        open(included_file, "rb").read(),
+                        included_file,
+                        'exec'),
+                    {},
+                    scope)
 
             # add dummy modules to sys.modules to make runserver autoreload
             # work with settings components
-            modulename = '_split_settings.%s' % conffile[
-                :conffile.rfind('.')].replace('/', '.')
+            modulename = '_split_settings.%s' % relative_path
             module = types.ModuleType(modulename)
             module.__file__ = included_file
             sys.modules[modulename] = module
