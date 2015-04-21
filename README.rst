@@ -163,6 +163,11 @@ files are NOT in alphabetical order.
 Changelog
 =========
 
+0.1.2
+-----
+
+* Fix python3 compatibility
+
 0.1.1
 -----
 
