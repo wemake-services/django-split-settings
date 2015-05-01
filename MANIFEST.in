@@ -1,0 +1,10 @@
+global-include *.py
+global-exclude *.pyc
+
+recursive-exclude tests *.py
+recursive-exclude tests *.pyc
+recursive-exclude example *.py
+recursive-exclude example *.pyc
+
+include LICENSE.txt
+include README.rst

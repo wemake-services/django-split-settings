@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
+# pylint: disable=invalid-name
+
+"""
+Organize Django settings into multiple files and directories.
+Easily override and modify settings. Use wildcards and optional
+settings files.
+"""
 
 import glob
 import os
 import sys
 import types
+
+__all__ = ['optional', 'include']
+
 
 class optional(str):
     """Wrap a file path with this class to mark it as optional.
@@ -12,10 +22,11 @@ class optional(str):
     """
     pass
 
+
 def include(*args, **kwargs):
     """Used for including Django project settings from multiple files.
 
-    Note: Expects to get ``scope=locals()`` as a keyword argument.
+    Note: Expects to get ``scope=globals()`` as a keyword argument.
 
     Usage::
 
@@ -26,17 +37,17 @@ def include(*args, **kwargs):
             'components/database.py',
             optional('local_settings.py'),
 
-            scope=locals()
+            scope=globals()
         )
 
     Parameters:
-        *args: File paths (``glob``-compatible wildcards can be used)
+        *args: File paths (``glob`` - compatible wildcards can be used)
         scope: The context for the settings, should always be ``locals()``
     Raises:
         IOError: if a required settings file is not found
 
     """
-    scope = kwargs.pop("scope")
+    scope = kwargs.pop('scope')
     including_file = scope.get('__included_file__',
                                scope['__file__'].rstrip('c'))
     confpath = os.path.dirname(including_file)
@@ -52,7 +63,7 @@ def include(*args, **kwargs):
 
         for included_file in files_to_include:
             scope['__included_file__'] = included_file
-            exec(open(included_file).read(), {}, scope)
+            execfile(included_file, scope)
 
             # add dummy modules to sys.modules to make runserver autoreload
             # work with settings components
