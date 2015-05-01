@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# pylint: disable=invalid-name,no-member
+# pylint: disable=invalid-name,no-member,fixme
 
 """
 This file contains tests with base functionality.
