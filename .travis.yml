@@ -14,17 +14,20 @@ env:
   - DJANGO="Django>=1.7.0,<1.8.0"
   - DJANGO="Django>=1.8.0,<1.9.0"
 
-matrix:
-  exclude:
-    - python: "2.6"
-      env: DJANGO="Django>=1.7.0,<1.8.0"
+#matrix:
+#  exclude:
+#    - python: "3.2"
+#      env: DJANGO="Django>=1.5.0,<1.6.0"
+#    - python: "3.3"
+#      env: DJANGO="Django>=1.5.0,<1.6.0"
+#    - python: "3.4"
+#      env: DJANGO="Django>=1.5.0,<1.6.0"
 
 install:
   - pip install -e .
-  - pip install nose pep8 pylint
+  - pip install nose pep8
   - travis_retry pip install $DJANGO
 
 script:
   - export DJANGO_SETTINGS_MODULE=example.settings
-#  - pylint setup.py split_settings example/tests
   - cd example && nosetests
