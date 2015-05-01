@@ -13,7 +13,6 @@ env:
   - DJANGO="Django>=1.5.0,<1.6.0"
   - DJANGO="Django>=1.6.0,<1.7.0"
   - DJANGO="Django>=1.7.0,<1.8.0"
-  - DJANGO_SETTINGS_MODULE=example.settings
 
 matrix:
   exclude:
@@ -26,5 +25,6 @@ install:
   - travis_retry pip install $DJANGO
 
 script:
+  - export DJANGO_SETTINGS_MODULE=example.settings
   - pylint setup.py split_settings example/tests
   - cd example && nosetests
