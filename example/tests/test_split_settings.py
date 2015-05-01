@@ -19,7 +19,7 @@ class TestSplitSettings(unittest.TestCase):
         """ Test that all values from settings are present. """
 
         self.assertTrue('SECRET_KEY' in merged.__dict__.keys())
-        self.assertTrue('STATIC_ROOT', merged.__dict__.keys())
+        self.assertTrue('STATIC_ROOT' in merged.__dict__.keys())
 
     def test_override(self):
         """ This setting must be overridden in the testing.py """

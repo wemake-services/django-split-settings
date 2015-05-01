@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# pylint: disable=invalid-name
+# pylint: disable=invalid-name,exec-used
 
 """
 Organize Django settings into multiple files and directories.
