@@ -2,6 +2,9 @@
  django-split-settings
 =======================
 
+.. image:: https://travis-ci.org/sobolevn/django-split-settings.png?branch=master
+   :target: https://travis-ci.org/sobolevn/django-split-settings
+
 Organize Django settings into multiple files and directories.  Easily
 override and modify settings.  Use wildcards in settings file paths
 and mark settings files as optional.
@@ -31,12 +34,12 @@ Here's a minimal example:
 .. code-block:: python
 
     from split_settings.tools import optional, include
-    
+
     include(
         'components/base.py',
         'components/database.py',
         optional('local_settings.py'),
-    
+
         scope=locals()
     )
 
@@ -62,7 +65,7 @@ to override settings in the local installation:
     from split_settings.tools import optional, include
     import os
     import socket
-    
+
     if os.environ['DJANGO_SETTINGS_MODULE'] == 'example.settings':
         # must bypass this block if another settings module was specified
         include(
@@ -73,15 +76,15 @@ to override settings in the local installation:
             'components/templates.py',
             'components/database.py',
             'components/logging.py',
-    
+
             # OVERRIDE SETTINGS
-    
+
             # hostname-based override, in settings/env/ directory
             optional('env/%s.py' % socket.gethostname().split('.', 1)[0]),
-    
+
             # local settings (do not commit to version control)
             optional(os.path.join(os.getcwd(), 'local_settings.py')),
-    
+
             scope=locals()
         )
 
@@ -110,15 +113,15 @@ configured in the previous files. For example:
 
     DEBUG = False
     TEMPLATE_DEBUG = DEBUG
-    
+
     MIDDLEWARE_CLASSES = (
         # Your project's default middleware classes
     )
-    
+
     INSTALLED_APPS = (
         # Your project's default apps
     )
-    
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -137,7 +140,7 @@ configured in the previous files. For example:
     # Use debug mode locally
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
-    
+
     # Add django-debug-toolbar
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     INSTALLED_APPS += ('debug_toolbar',)
