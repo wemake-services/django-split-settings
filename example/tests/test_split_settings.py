@@ -18,8 +18,8 @@ class TestSplitSettings(unittest.TestCase):
     def test_merge(self):   # TODO: dynamic module loading
         """ Test that all values from settings are present. """
 
-        self.assertIn('SECRET_KEY', merged.__dict__.keys())
-        self.assertIn('STATIC_ROOT', merged.__dict__.keys())
+        self.assertTrue('SECRET_KEY' in merged.__dict__.keys())
+        self.assertTrue('STATIC_ROOT', merged.__dict__.keys())
 
     def test_override(self):
         """ This setting must be overridden in the testing.py """
