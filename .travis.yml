@@ -5,8 +5,8 @@ sudo: false
 python:
   - "2.7"
   - "3.2"
-  # - "3.3"
-  # - "3.4"
+  - "3.3"
+  - "3.4"
 
 env:
   - DJANGO="Django>=1.5.0,<1.6.0"
@@ -26,5 +26,5 @@ install:
 
 script:
   - export DJANGO_SETTINGS_MODULE=example.settings
-  - pylint setup.py split_settings example/tests
+#  - pylint setup.py split_settings example/tests
   - cd example && nosetests
