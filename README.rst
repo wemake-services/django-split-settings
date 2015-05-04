@@ -10,6 +10,13 @@ override and modify settings.  Use wildcards in settings file paths
 and mark settings files as optional.
 
 
+Requirements
+============
+
+    * Python 2.7, 3.2, 3.3, 3.4
+    * Django >= 1.5, < 1.9
+
+
 Installation
 ============
 
