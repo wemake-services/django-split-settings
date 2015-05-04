@@ -1,6 +1,6 @@
-=======================
- django-split-settings
-=======================
+=====================
+django-split-settings
+=====================
 
 .. image:: https://travis-ci.org/sobolevn/django-split-settings.png?branch=master
    :target: https://travis-ci.org/sobolevn/django-split-settings
@@ -40,7 +40,7 @@ Here's a minimal example:
         'components/database.py',
         optional('local_settings.py'),
 
-        scope=locals()
+        scope=globals()
     )
 
 In the example, the files ``base.py`` and ``database.py`` are included
@@ -85,7 +85,7 @@ to override settings in the local installation:
             # local settings (do not commit to version control)
             optional(os.path.join(os.getcwd(), 'local_settings.py')),
 
-            scope=locals()
+            scope=globals()
         )
 
 The example also tries to include a settings file with the current
@@ -163,8 +163,27 @@ probably in the same order as what ``ls -U`` would list them. The
 files are NOT in alphabetical order.
 
 
+Do you want to contribute?
+==========================
+
+Read the `contribute`_ file.
+
+Authors
+=======
+
+    * `akaihola`_
+    * `roxeteer`_
+    * `Forever-Young`_
+    * `sobolevn`_
+
+
 Changelog
 =========
+
+0.1.2
+-----
+
+* Fixed Python 3 compatibility. Fixed `issue #7`_.
 
 0.1.1
 -----
@@ -177,5 +196,11 @@ Changelog
 * Initial version
 
 
-.. _`GitHub repository`: http://github.com/2general/django-split-settings
-.. _`issue #1`: https://github.com/2general/django-split-settings/issues/1
+.. _`GitHub repository`: https://github.com/sobolevn/django-split-settings/tree/master/example
+.. _`contribute`: https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.rst
+.. _`akaihola`: https://github.com/akaihola
+.. _`roxeteer`: https://github.com/roxeteer
+.. _`Forever-Young`: https://github.com/Forever-Young
+.. _`sobolevn`: https://github.com/sobolevn
+.. _`issue #1`: https://github.com/sobolevn/django-split-settings/issues/1
+.. _`issue #7`: https://github.com/sobolevn/django-split-settings/issues/7

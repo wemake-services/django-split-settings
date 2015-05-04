@@ -63,11 +63,8 @@ def include(*args, **kwargs):
 
         for included_file in files_to_include:
             scope['__included_file__'] = included_file
-            if sys.version_info[0] < 3:
-                execfile(included_file, scope)
-            else:
-                to_compile = open(included_file, 'rb').read()
-                exec(compile(to_compile, included_file, 'exec'), scope)
+            with open(included_file, 'rb') as to_compile:
+                exec(compile(to_compile.read(), included_file, 'exec'), scope)
 
             # add dummy modules to sys.modules to make runserver autoreload
             # work with settings components

@@ -1,10 +1,8 @@
 global-include *.py
 global-exclude *.pyc
 
-recursive-exclude tests *.py
-recursive-exclude tests *.pyc
-recursive-exclude example *.py
-recursive-exclude example *.pyc
+recursive-exclude example *
 
-include LICENSE.txt
-include README.rst
+include LICENSE.txt README.rst
+
+exclude .gitignore .travis.yml .editorconfig
