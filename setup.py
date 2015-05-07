@@ -27,8 +27,8 @@ setup(
         'Easily override and modify settings. Use wildcards and optional '
         'settings files.'
     ),
-    author='Visa Kopu, Antti Kaihola (2General Ltd.)',
-    author_email='visa@2general.com',
+    author='Visa Kopu, Antti Kaihola, Nikita Sobolev',
+    author_email='mail@sobolevn.me',
     url='http://github.com/sobolevn/django-split-settings',
     packages=['split_settings'],    # find_packages(exclude=['example']),
     include_package_data=True,

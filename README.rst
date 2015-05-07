@@ -5,6 +5,9 @@ django-split-settings
 .. image:: https://travis-ci.org/sobolevn/django-split-settings.png?branch=master
    :target: https://travis-ci.org/sobolevn/django-split-settings
 
+.. image:: https://badge.fury.io/py/django-split-settings.svg
+    :target: http://badge.fury.io/py/django-split-settings
+
 Organize Django settings into multiple files and directories.  Easily
 override and modify settings.  Use wildcards in settings file paths
 and mark settings files as optional.
@@ -13,8 +16,9 @@ and mark settings files as optional.
 Requirements
 ============
 
-    * Python 2.7, 3.2, 3.3, 3.4
-    * Django >= 1.5, < 1.9
+Python 2.7, 3.2, 3.3, 3.4
+
+Django >= 1.5, < 1.9
 
 
 Installation
@@ -180,7 +184,6 @@ Authors
 
     * `akaihola`_
     * `roxeteer`_
-    * `Forever-Young`_
     * `sobolevn`_
 
 
@@ -207,7 +210,6 @@ Changelog
 .. _`contribute`: https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.rst
 .. _`akaihola`: https://github.com/akaihola
 .. _`roxeteer`: https://github.com/roxeteer
-.. _`Forever-Young`: https://github.com/Forever-Young
 .. _`sobolevn`: https://github.com/sobolevn
 .. _`issue #1`: https://github.com/sobolevn/django-split-settings/issues/1
 .. _`issue #7`: https://github.com/sobolevn/django-split-settings/issues/7
