@@ -27,7 +27,7 @@ setup(
         'Easily override and modify settings. Use wildcards and optional '
         'settings files.'
     ),
-    author='Visa Kopu, Antti Kaihola, Nikita Sobolev',
+    author='Nikita Sobolev, Visa Kopu, Antti Kaihola',
     author_email='mail@sobolevn.me',
     url='http://github.com/sobolevn/django-split-settings',
     packages=['split_settings'],    # find_packages(exclude=['example']),
@@ -37,7 +37,7 @@ setup(
     tests_require=TEST_REQUIRE,
     zip_safe=False,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Framework :: Django',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
@@ -45,6 +45,7 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Internet :: WWW/HTTP',
         'License :: OSI Approved :: BSD License',
         'Topic :: Software Development :: Libraries :: Python Modules',
