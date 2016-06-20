@@ -1,2 +1,0 @@
-Django>=1.5.1
-django-split-settings>=0.1.0

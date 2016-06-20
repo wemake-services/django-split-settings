@@ -5,11 +5,11 @@ django-split-settings
 .. image:: https://travis-ci.org/sobolevn/django-split-settings.png?branch=master
    :target: https://travis-ci.org/sobolevn/django-split-settings
 
+.. image:: https://coveralls.io/repos/github/sobolevn/django-split-settings/badge.svg?branch=master
+   :target: https://coveralls.io/github/sobolevn/django-split-settings?branch=master
+
 .. image:: https://badge.fury.io/py/django-split-settings.svg
    :target: http://badge.fury.io/py/django-split-settings
-
-.. image:: https://img.shields.io/pypi/dm/django-split-settings.svg
-   :target: https://pypi.python.org/pypi/django-split-settings
 
 .. image:: https://img.shields.io/pypi/pyversions/django-split-settings.svg
    :target: https://pypi.python.org/pypi/django-split-settings
@@ -196,25 +196,7 @@ Authors
 Changelog
 =========
 
-0.1.3
------
-
-* Python 3.5 support, Django 1.9 test-support, documentation updates.
-
-0.1.2
------
-
-* Fixed Python 3 compatibility. Fixed `issue #7`_.
-
-0.1.1
------
-
-* Fixed `issue #1`_: now works with Gunicorn, too
-
-0.1.0
------
-
-* Initial version
+See `changelog`_ file.
 
 
 .. _`GitHub repository`: https://github.com/sobolevn/django-split-settings/tree/master/example
@@ -222,5 +204,4 @@ Changelog
 .. _`akaihola`: https://github.com/akaihola
 .. _`roxeteer`: https://github.com/roxeteer
 .. _`sobolevn`: https://github.com/sobolevn
-.. _`issue #1`: https://github.com/sobolevn/django-split-settings/issues/1
-.. _`issue #7`: https://github.com/sobolevn/django-split-settings/issues/7
+.. _`changelog`: https://github.com/sobolevn/django-split-settings/blob/master/CHANGELOG.rst
