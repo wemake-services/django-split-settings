@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# pylint: disable=invalid-name,exec-used
+# pylint: disable=exec-used
 
 """
 Organize Django settings into multiple files and directories.
@@ -15,7 +15,22 @@ import types
 __all__ = ['optional', 'include']
 
 
-class optional(str):
+def optional(filename):
+    """
+    This functions is used for compatibility reasons,
+    it masks the old `optional` class with the name error.
+    Now `invalid-name` is removed from `pylint`.
+
+    Args:
+        filename: the filename to be optional
+
+    Returns: new instance of :class:`_Optional`
+
+    """
+    return _Optional(filename)
+
+
+class _Optional(str):
     """Wrap a file path with this class to mark it as optional.
 
     Optional paths don't raise an IOError if file is not found.
@@ -42,23 +57,25 @@ def include(*args, **kwargs):
 
     Parameters:
         *args: File paths (``glob`` - compatible wildcards can be used)
-        scope: The context for the settings, should always be ``locals()``
+        **kwargs: The context for the settings,
+            should always contain ``scope=globals()``
+
     Raises:
         IOError: if a required settings file is not found
-
     """
+
     scope = kwargs.pop('scope')
     including_file = scope.get('__included_file__',
                                scope['__file__'].rstrip('c'))
-    confpath = os.path.dirname(including_file)
-    for conffile in args:
+    conf_path = os.path.dirname(including_file)
+    for conf_file in args:
         saved_included_file = scope.get('__included_file__')
-        pattern = os.path.join(confpath, conffile)
+        pattern = os.path.join(conf_path, conf_file)
 
         # find files per pattern, raise an error if not found (unless file is
         # optional)
         files_to_include = glob.glob(pattern)
-        if not files_to_include and not isinstance(conffile, optional):
+        if not files_to_include and not isinstance(conf_file, _Optional):
             raise IOError('No such file: %s' % pattern)
 
         for included_file in files_to_include:
@@ -68,11 +85,11 @@ def include(*args, **kwargs):
 
             # add dummy modules to sys.modules to make runserver autoreload
             # work with settings components
-            modulename = ('_split_settings.%s'
-                          % conffile[:conffile.rfind('.')].replace('/', '.'))
-            module = types.ModuleType(modulename)
+            module_name = ('_split_settings.%s' %
+                           conf_file[:conf_file.rfind('.')].replace('/', '.'))
+            module = types.ModuleType(module_name)
             module.__file__ = included_file
-            sys.modules[modulename] = module
+            sys.modules[module_name] = module
         if saved_included_file:
             scope['__included_file__'] = saved_included_file
         elif '__included_file__' in scope:

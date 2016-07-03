@@ -6,7 +6,9 @@ This file contains tests with base functionality.
 """
 
 import unittest
+
 from django.conf import settings as result
+
 from example import settings as merged
 
 
@@ -25,7 +27,3 @@ class TestSplitSettings(unittest.TestCase):
         """ This setting must be overridden in the testing.py """
 
         self.assertEqual(merged.STATIC_ROOT, result.STATIC_ROOT)
-
-
-if __name__ == '__main__':
-    unittest.main()

@@ -2,6 +2,15 @@
 Changelog
 =========
 
+0.2.1
+-----
+
+* Changed ``optional`` to be a function.
+* Added ``test_tools.py``, achieved 100% in coverage.
+* Removed ``setuptools-git`` from ``setup.py``, now ``Manifest`` is only way to provide ``dist`` sources.
+* Added ``run_coveralls.py`` to work on both ``CI`` and local tests.
+* Style fixes.
+
 0.2.0
 -----
 

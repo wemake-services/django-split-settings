@@ -1,8 +1,2 @@
-global-exclude *.pyc
-
 recursive-include split_settings *.py
-recursive-exclude example *
-
 include LICENSE.txt README.rst
-
-exclude .gitignore .travis.yml .editorconfig tox.ini

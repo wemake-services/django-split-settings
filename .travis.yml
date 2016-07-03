@@ -32,6 +32,7 @@ deploy:
   user: sobolevn
   password: $PYPI_PASSWORD  # password is hidden
   on:
+    branch: master  # only in master branch
     tags: true  # deploy on tags only
     condition: "${TOX_ENV} == 'cover'"  # deploy only once
 

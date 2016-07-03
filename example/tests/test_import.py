@@ -6,8 +6,7 @@ This module tests import of django-split-setting.
 """
 
 import unittest
-from split_settings import *
-from split_settings.tools import *
+import types
 
 
 class TestModuleImport(unittest.TestCase):
@@ -19,18 +18,18 @@ class TestModuleImport(unittest.TestCase):
         :param _include: include function.
         :param _optional: optional class.
         """
-        self.assertEqual(type(_version), type('x.x.x'))
-        self.assertEqual(type(_include), type(lambda x: x))
-        self.assertEqual(type(_optional), type(unittest.TestCase))
+        self.assertEqual(type(_version), str)
+        self.assertEqual(type(_include), types.FunctionType)
+        self.assertEqual(type(_optional), types.FunctionType)
 
     def test_module_import(self):
         """ Import base functionality. """
         try:
-            from split_settings import __version__ as _version
-            from split_settings.tools import include as _include
-            from split_settings.tools import optional as _optional
+            from split_settings import __version__
+            from split_settings.tools import include
+            from split_settings.tools import optional
 
-            self._assert_types(_version, _include, _optional)
+            self._assert_types(__version__, include, optional)
 
         except ImportError as import_error:
             self.fail(msg=import_error)
@@ -38,7 +37,9 @@ class TestModuleImport(unittest.TestCase):
     def test_wildcard_import(self):
         """ Imports all from all modules """
         try:
-            self._assert_types(__version__, include, optional)
+            from split_settings.tools import __all__
+            self.assertIn('optional', __all__)
+            self.assertIn('include', __all__)
 
         except ImportError as import_error:
             self.fail(msg=import_error)
@@ -51,6 +52,3 @@ class TestModuleImport(unittest.TestCase):
 
         self.assertEqual(merged.STATIC_ROOT,
                          _testing.TestingConfiguration('').get_path())
-
-if __name__ == '__main__':
-    unittest.main()
