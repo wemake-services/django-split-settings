@@ -2,7 +2,7 @@
 django-split-settings
 =====================
 
-.. image:: https://travis-ci.org/sobolevn/django-split-settings.png?branch=master
+.. image:: https://travis-ci.org/sobolevn/django-split-settings.svg?branch=master
    :target: https://travis-ci.org/sobolevn/django-split-settings
 
 .. image:: https://coveralls.io/repos/github/sobolevn/django-split-settings/badge.svg?branch=master
@@ -43,8 +43,6 @@ Usage
 Replace your existing ``settings.py`` with a list of components that
 make up your Django settings.  Preferably create a settings package
 that contains all the files.
-
-The `GitHub repository`_ contains an example app.
 
 Here's a minimal example:
 
@@ -199,7 +197,6 @@ Changelog
 See `changelog`_ file.
 
 
-.. _`GitHub repository`: https://github.com/sobolevn/django-split-settings/tree/master/example
 .. _`contribute`: https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.rst
 .. _`akaihola`: https://github.com/akaihola
 .. _`roxeteer`: https://github.com/roxeteer

@@ -13,8 +13,6 @@ env:
   - TOX_ENV=py34-dj17
   - TOX_ENV=py34-dj18
   - TOX_ENV=py34-dj19
-  - TOX_ENV=py35-dj16
-  - TOX_ENV=py35-dj17
   - TOX_ENV=py35-dj18
   - TOX_ENV=py35-dj19
   - TOX_ENV=lint
