@@ -5,11 +5,12 @@
 This module tests import of django-split-setting.
 """
 
-import unittest
 import types
 
+from django.test import TestCase
 
-class TestModuleImport(unittest.TestCase):
+
+class TestModuleImport(TestCase):
     """ Tests different cases of import. """
 
     def _assert_types(self, _version, _include, _optional):
@@ -47,8 +48,8 @@ class TestModuleImport(unittest.TestCase):
     def test_class_import(self):
         """ This test case covers #7 issue. """
 
-        from example.settings.components import testing as _testing
-        from example import settings as merged
+        from tests.settings.components import testing as _testing
+        from tests import settings as merged
 
         self.assertEqual(merged.STATIC_ROOT,
                          _testing.TestingConfiguration('').get_path())

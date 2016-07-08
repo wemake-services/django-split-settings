@@ -87,7 +87,8 @@ def include(*args, **kwargs):
             # work with settings components
             module_name = ('_split_settings.%s' %
                            conf_file[:conf_file.rfind('.')].replace('/', '.'))
-            module = types.ModuleType(module_name)
+
+            module = types.ModuleType(str(module_name))
             module.__file__ = included_file
             sys.modules[module_name] = module
         if saved_included_file:

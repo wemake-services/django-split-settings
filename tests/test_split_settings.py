@@ -9,7 +9,7 @@ import unittest
 
 from django.conf import settings as result
 
-from example import settings as merged
+from tests import settings as merged
 
 
 class TestSplitSettings(unittest.TestCase):
@@ -26,4 +26,5 @@ class TestSplitSettings(unittest.TestCase):
     def test_override(self):
         """ This setting must be overridden in the testing.py """
 
+        # noinspection PyUnresolvedReferences
         self.assertEqual(merged.STATIC_ROOT, result.STATIC_ROOT)

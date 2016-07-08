@@ -9,6 +9,7 @@ from setuptools import setup
 from split_settings import __version__
 
 INSTALL_REQUIRES = ['Django>=1.5.1', ]
+TEST_REQUIRES = ['pytest', 'six', ]  # pylint is not happy without this line.
 
 setup(
     name='django-split-settings',
@@ -26,6 +27,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=INSTALL_REQUIRES,
+    test_requires=TEST_REQUIRES,
     zip_safe=False,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
