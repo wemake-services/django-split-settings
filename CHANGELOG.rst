@@ -2,6 +2,14 @@
 Changelog
 =========
 
+0.2.2
+-----
+
+* Now supporting `unicode` filenames, fixes https://github.com/sobolevn/django-split-settings/issues/9
+* Tests structure is changed
+* Removed example
+* Changed how `MANIFEST.in` is defined
+
 0.2.1
 -----
 
