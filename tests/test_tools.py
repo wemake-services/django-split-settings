@@ -36,8 +36,8 @@ def test_keys_count():
         scope=scope,
     )
 
-    # Keys: 'FIXTURE_VALUE', '__file__', '__doc__', '__builtins__'
-    assert len(scope.keys()) == 4
+    # Keys: 'FIXTURE_VALUE', '__file__', '__doc__', '__builtins__', '__included_files__'
+    assert len(scope.keys()) == 5
 
 
 def test_included_file_scope():
@@ -87,3 +87,36 @@ def test_unicode_passed():
     )
 
     assert 'FIXTURE_VALUE' in scope
+
+
+def test_caller_scope_automatically():
+    """
+    Tests `include` function for automatic `globals()` extraction from execution stack.
+    Now you can omit positional argument `scope`.
+    """
+
+    include(
+        six.text_type(FIXTURE)
+    )
+
+    assert 'FIXTURE_VALUE' in globals()
+
+
+def test_recursion_inclusion():
+    """
+    Tests `include` function for inclusion files only once. It protects of infinite recursion.
+    """
+
+    from tests.settings import recursion
+
+    assert hasattr(recursion, 'RECURSION_OK')
+
+def test_stacked_settings():
+    """
+    Tests `include` function for inclusion files only once. It protects of infinite recursion.
+    """
+
+    from tests.settings import stacked
+
+    assert hasattr(stacked, 'STACKED_BASE_LOADED')
+    assert hasattr(stacked, 'STACKED_DB_PERSISTENT')

@@ -8,6 +8,7 @@ settings files.
 """
 
 import glob
+import inspect
 import os
 import sys
 import types
@@ -64,7 +65,15 @@ def include(*args, **kwargs):
         IOError: if a required settings file is not found
     """
 
-    scope = kwargs.pop('scope')
+    if 'scope' not in kwargs:
+        # we are getting globals() from previous frame globals - it is caller's globals()
+        scope = inspect.stack()[1][0].f_globals
+    else:
+        scope = kwargs.pop('scope')
+
+    scope.setdefault('__included_files__', [])
+    included_files = scope.get('__included_files__')
+
     including_file = scope.get('__included_file__',
                                scope['__file__'].rstrip('c'))
     conf_path = os.path.dirname(including_file)
@@ -79,6 +88,11 @@ def include(*args, **kwargs):
             raise IOError('No such file: %s' % pattern)
 
         for included_file in files_to_include:
+            if included_file in included_files:
+                continue
+
+            included_files.append(included_file)
+
             scope['__included_file__'] = included_file
             with open(included_file, 'rb') as to_compile:
                 exec(compile(to_compile.read(), included_file, 'exec'), scope)
