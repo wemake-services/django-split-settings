@@ -5,9 +5,13 @@ Changelog
 0.2.3
 -----
 
-* Now `include` function finds parent `globals()` scope automatically
-* added protection against infinite recursion with tests
-* added tests for stackable settings definition. Check settings example in tests/settings/stacked/.
+* Added `django@1.10` support
+* Now `include` function finds parent `globals()` scope automatically if not provided
+* Added protection against infinite recursion
+* Added tests for stackable settings definition. See `tests/settings/stacked/`
+* Added tests for the new functionality
+* Added tests for `django@1.10` in `tox` and `travis`
+* Removed `3.2` and `3.3` from `setup.py` since these versions were not tested anyway
 
 0.2.2
 -----

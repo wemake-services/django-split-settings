@@ -13,6 +13,6 @@ insert_final_newline = true
 indent_style = space
 indent_size = 4
 
-[.{md, rst, in}]
+[*.{md,rst,in}]
 indent_style = ignore
 indent_size = ignore

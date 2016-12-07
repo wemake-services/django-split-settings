@@ -22,9 +22,9 @@ and mark settings files as optional.
 Requirements
 ============
 
-Python 2.7, 3.2, 3.3, 3.4, 3.5
+Python 2.7, 3.4, 3.5
 
-Django >= 1.5, <= 1.9 (depends on your Python version)
+Django >= 1.5, <= 1.10 (depends on your Python version)
 
 
 Installation
@@ -77,9 +77,10 @@ to override settings in the local installation:
 
 .. code-block:: python
 
-    from split_settings.tools import optional, include
     import os
     import socket
+
+    from split_settings.tools import optional, include
 
     if os.environ['DJANGO_SETTINGS_MODULE'] == 'example.settings':
         # must bypass this block if another settings module was specified
@@ -100,8 +101,9 @@ to override settings in the local installation:
             # local settings (do not commit to version control)
             optional(os.path.join(os.getcwd(), 'local_settings.py')),
 
-            # starting from version 0.2.3 is not necessary to pass scope.
-            # it finds parent globals() scope automatically. But it still accepts it.
+            # starting from version 0.2.3 it is not necessary to pass the scope,
+            # it finds parent `globals()` scope automatically,
+            # but it is still possible to pass it directly.
             scope=globals()
         )
 
