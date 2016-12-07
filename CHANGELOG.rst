@@ -2,6 +2,13 @@
 Changelog
 =========
 
+0.2.3
+-----
+
+* Now `include` function finds parent `globals()` scope automatically
+* added protection against infinite recursion with tests
+* added tests for stackable settings definition. Check settings example in tests/settings/stacked/.
+
 0.2.2
 -----
 

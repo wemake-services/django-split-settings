@@ -100,6 +100,8 @@ to override settings in the local installation:
             # local settings (do not commit to version control)
             optional(os.path.join(os.getcwd(), 'local_settings.py')),
 
+            # starting from version 0.2.3 is not necessary to pass scope.
+            # it finds parent globals() scope automatically. But it still accepts it.
             scope=globals()
         )
 
@@ -189,6 +191,7 @@ Authors
     * `akaihola`_
     * `roxeteer`_
     * `sobolevn`_
+    * `phpdude`_
 
 
 Changelog
@@ -201,4 +204,5 @@ See `changelog`_ file.
 .. _`akaihola`: https://github.com/akaihola
 .. _`roxeteer`: https://github.com/roxeteer
 .. _`sobolevn`: https://github.com/sobolevn
+.. _`phpdude`: https://github.com/phpdude
 .. _`changelog`: https://github.com/sobolevn/django-split-settings/blob/master/CHANGELOG.rst
