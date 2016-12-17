@@ -2,6 +2,19 @@
 Changelog
 =========
 
+0.2.4
+-----
+
+* Changed the default Django version in the requirements from `>= 1.5.1` to `>= 1.5`
+* Added `setup.cfg` to support `python setup.py test` command
+* Refactored how the tests work
+* Added `tests/conftest.py` file with the fixtures, used fixtures widely
+* Changed all test to be functions instead of classes
+* Added new classifiers
+* Added `pytest-env` to read env variables from `setup.cfg`
+* Removed `run_coveralls.py`, added `after_success` section in `.travis.yml`
+* Changed the `README.rst` to be shorter
+
 0.2.3
 -----
 

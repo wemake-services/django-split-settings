@@ -8,8 +8,10 @@ for more information.
 from setuptools import setup
 from split_settings import __version__
 
-INSTALL_REQUIRES = ['Django>=1.5.1', ]
-TEST_REQUIRES = ['pytest', 'six', ]  # pylint is not happy without this line.
+INSTALL_REQUIRES = ['Django>=1.5', ]
+# pylint is not happy without this line:
+TESTS_REQUIRE = ['pytest', 'six', 'pytest-env', ]
+SETUP_REQUIRES = ['pytest-runner', ]
 
 setup(
     name='django-split-settings',
@@ -27,7 +29,8 @@ setup(
     ],
     include_package_data=True,
     install_requires=INSTALL_REQUIRES,
-    test_requires=TEST_REQUIRES,
+    tests_require=TESTS_REQUIRE,
+    setup_requires=SETUP_REQUIRES,
     zip_safe=False,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -38,6 +41,7 @@ setup(
         'Framework :: Django :: 1.7',
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
+        'Framework :: Django :: 1.10',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',

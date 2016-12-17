@@ -40,9 +40,8 @@ class _Optional(str):
 
 
 def include(*args, **kwargs):
-    """Used for including Django project settings from multiple files.
-
-    Note: Expects to get ``scope=globals()`` as a keyword argument.
+    """
+    Used for including Django project settings from multiple files.
 
     Usage::
 
@@ -53,20 +52,21 @@ def include(*args, **kwargs):
             'components/database.py',
             optional('local_settings.py'),
 
-            scope=globals()
+            scope=globals()  # optional scope
         )
 
     Parameters:
         *args: File paths (``glob`` - compatible wildcards can be used)
         **kwargs: The context for the settings,
-            should always contain ``scope=globals()``
+            may contain ``scope=globals()`` or be empty
 
     Raises:
         IOError: if a required settings file is not found
     """
 
     if 'scope' not in kwargs:
-        # we are getting globals() from previous frame globals - it is caller's globals()
+        # we are getting globals() from previous frame
+        # globals - it is caller's globals()
         scope = inspect.stack()[1][0].f_globals
     else:
         scope = kwargs.pop('scope')
@@ -74,9 +74,12 @@ def include(*args, **kwargs):
     scope.setdefault('__included_files__', [])
     included_files = scope.get('__included_files__')
 
-    including_file = scope.get('__included_file__',
-                               scope['__file__'].rstrip('c'))
+    including_file = scope.get(
+        '__included_file__',
+        scope['__file__'].rstrip('c')
+    )
     conf_path = os.path.dirname(including_file)
+
     for conf_file in args:
         saved_included_file = scope.get('__included_file__')
         pattern = os.path.join(conf_path, conf_file)

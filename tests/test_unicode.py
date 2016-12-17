@@ -7,17 +7,26 @@ See https://github.com/sobolevn/django-split-settings/issues/9
 
 from __future__ import unicode_literals
 
+import os
+
 from split_settings.tools import include
 
 __author__ = 'sobolevn'
 
 
-def test_unicode_filename():
-    """ This represents the `hidden-unicode` situation. """
+def test_unicode_filename(scope):
+    """
+    This represents the `hidden-unicode` situation.
+    """
 
-    include(
-        'fixture_to_include.py',
-        scope=globals(),
+    file_path = os.path.join(
+        'settings',  # this should be written as string
+        'fixture_to_include.py'
     )
 
-    assert 'FIXTURE_VALUE' in globals()
+    include(
+        file_path,
+        scope=scope,
+    )
+
+    assert 'FIXTURE_VALUE' in scope
