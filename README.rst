@@ -1,6 +1,12 @@
-=====================
-django-split-settings
-=====================
+.. raw:: html
+
+    <a href="https://github.com/sobolevn/django-split-settings">
+      <p align="center">
+         <img src="https://i.imgur.com/vISkpwj.png">
+      </p>
+    </a>
+
+----------
 
 .. image:: https://travis-ci.org/sobolevn/django-split-settings.svg?branch=master
    :target: https://travis-ci.org/sobolevn/django-split-settings
