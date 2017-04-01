@@ -99,7 +99,7 @@ Changelog
 See `changelog`_ file.
 
 
-.. _`contribute`: https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.rst
+.. _`contributing`: https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.rst
 .. _`akaihola`: https://github.com/akaihola
 .. _`roxeteer`: https://github.com/roxeteer
 .. _`sobolevn`: https://github.com/sobolevn
