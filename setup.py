@@ -5,6 +5,7 @@ Visit https://pypi.python.org/pypi/django-split-settings
 for more information.
 """
 
+import io
 from setuptools import setup
 from split_settings import __version__
 
@@ -12,6 +13,9 @@ INSTALL_REQUIRES = ['Django>=1.5', ]
 # pylint is not happy without this line:
 TESTS_REQUIRE = ['pytest', 'six', 'pytest-env', ]
 SETUP_REQUIRES = ['pytest-runner', ]
+
+with io.open('README.rst', 'r', encoding='utf-8') as f:
+    LONG_DESCRIPTION = f.read()
 
 setup(
     name='django-split-settings',
@@ -21,6 +25,7 @@ setup(
         'Easily override and modify settings. Use wildcards and optional '
         'settings files.'
     ),
+    long_description=LONG_DESCRIPTION,
     author='Nikita Sobolev, Visa Kopu, Antti Kaihola',
     author_email='mail@sobolevn.me',
     url='http://github.com/sobolevn/django-split-settings',
@@ -32,6 +37,12 @@ setup(
     tests_require=TESTS_REQUIRE,
     setup_requires=SETUP_REQUIRES,
     zip_safe=False,
+    keywords=[
+        'django',
+        'settings',
+        'configuration',
+        'config',
+    ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
@@ -48,6 +59,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',

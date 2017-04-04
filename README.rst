@@ -1,36 +1,31 @@
-.. raw:: html
 
-    <a href="https://github.com/sobolevn/django-split-settings">
-      <p align="center">
-         <img src="media/logo-black.png">
-      </p>
-    </a>
+.. image:: https://github.com/sobolevn/django-split-settings/blob/master/media/logo-black.png?raw=true
+     :target: https://github.com/sobolevn/django-split-settings
+     :align: center
 
 ----------
 
 .. image:: https://travis-ci.org/sobolevn/django-split-settings.svg?branch=master
-   :target: https://travis-ci.org/sobolevn/django-split-settings
+     :target: https://travis-ci.org/sobolevn/django-split-settings
 
 .. image:: https://coveralls.io/repos/github/sobolevn/django-split-settings/badge.svg?branch=master
-   :target: https://coveralls.io/github/sobolevn/django-split-settings?branch=master
+     :target: https://coveralls.io/github/sobolevn/django-split-settings?branch=master
 
 .. image:: https://badge.fury.io/py/django-split-settings.svg
-   :target: http://badge.fury.io/py/django-split-settings
+     :target: http://badge.fury.io/py/django-split-settings
 
 .. image:: https://img.shields.io/pypi/pyversions/django-split-settings.svg
-   :target: https://pypi.python.org/pypi/django-split-settings
+     :target: https://pypi.python.org/pypi/django-split-settings
 
 Organize Django settings into multiple files and directories.  Easily
-override and modify settings.  Use wildcards in settings file paths
+override and modify settings. Use wildcards in settings file paths
 and mark settings files as optional.
 
 
 Requirements
 ============
 
-Python 2.7, 3.4, 3.5
-
-Django >= 1.5, <= 1.10 (depends on your Python version)
+We support ``django`` versions from ``1.5`` up to the most recent one.
 
 
 Installation
@@ -38,7 +33,7 @@ Installation
 
 Install by using ``pip``:
 
-.. code-block:: bash
+.. code:: bash
 
     pip install django-split-settings
 
@@ -52,7 +47,7 @@ that contains all the files.
 
 Here's a minimal example:
 
-.. code-block:: python
+.. code:: python
 
     from split_settings.tools import optional, include
 
@@ -76,7 +71,7 @@ Tips and tricks
 
 You can use wildcards in file paths:
 
-.. code-block:: python
+.. code:: python
 
     include('components/my_app/*.py')
 
@@ -90,24 +85,12 @@ Do you want to contribute?
 
 Read the `contributing`_ file.
 
-Authors
-=======
-
-    * `akaihola`_
-    * `roxeteer`_
-    * `sobolevn`_
-    * `phpdude`_
+.. _contributing: https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.rst
 
 
-Changelog
-=========
+Version history
+===============
 
 See `changelog`_ file.
 
-
-.. _`contributing`: https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.rst
-.. _`akaihola`: https://github.com/akaihola
-.. _`roxeteer`: https://github.com/roxeteer
-.. _`sobolevn`: https://github.com/sobolevn
-.. _`phpdude`: https://github.com/phpdude
-.. _`changelog`: https://github.com/sobolevn/django-split-settings/blob/master/CHANGELOG.rst
+.. _changelog: https://github.com/sobolevn/django-split-settings/blob/master/CHANGELOG.rst

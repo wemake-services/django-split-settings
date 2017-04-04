@@ -18,15 +18,7 @@ Before submitting your code please do the following steps:
 	3. Run tests with all the Python interpreters with ``tox``.
 	4. Submit your code.
 
-Contributors
-============
+Authors
+=======
 
-	* `akaihola`_
-	* `roxeteer`_
-	* `Forever-Young`_
-	* `sobolevn`_
-
-.. _`akaihola`: https://github.com/akaihola
-.. _`roxeteer`: https://github.com/roxeteer
-.. _`Forever-Young`: https://github.com/Forever-Young
-.. _`sobolevn`: https://github.com/sobolevn
+Do not forget to add yourself into ``AUTHORS.rst``.
