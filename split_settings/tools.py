@@ -34,7 +34,7 @@ def optional(filename):
 class _Optional(str):
     """Wrap a file path with this class to mark it as optional.
 
-    Optional paths don't raise an IOError if file is not found.
+    Optional paths don't raise an :class:`IOError` if file is not found.
     """
     pass
 
