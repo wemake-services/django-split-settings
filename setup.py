@@ -9,10 +9,18 @@ import io
 from setuptools import setup
 from split_settings import __version__
 
+
 INSTALL_REQUIRES = ['Django>=1.5', ]
-# pylint is not happy without this line:
-TESTS_REQUIRE = ['pytest', 'six', 'pytest-env', ]
-SETUP_REQUIRES = ['pytest-runner', ]
+
+TESTS_REQUIRE = [
+    'six',
+    'pytest',
+    'pytest-env',
+]
+
+SETUP_REQUIRES = [
+    'pytest-runner',
+]
 
 with io.open('README.rst', 'r', encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
@@ -53,6 +61,7 @@ setup(
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
         'Framework :: Django :: 1.10',
+        'Framework :: Django :: 1.11',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',

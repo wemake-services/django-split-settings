@@ -21,6 +21,7 @@ def test_unicode_filename(scope):
 
     file_path = os.path.join(
         'settings',  # this should be written as string
+        'basic',
         'fixture_to_include.py'
     )
 

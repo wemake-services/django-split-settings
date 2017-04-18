@@ -1,31 +1,18 @@
 language: python
 
 python:
-  - 3.5  # fix for the "`python3.5` is not found"
-
-env:
-  - TOX_ENV=py27-dj15
-  - TOX_ENV=py27-dj16
-  - TOX_ENV=py27-dj17
-  - TOX_ENV=py27-dj18
-  - TOX_ENV=py27-dj19
-  - TOX_ENV=py27-dj110
-  - TOX_ENV=py34-dj16
-  - TOX_ENV=py34-dj17
-  - TOX_ENV=py34-dj18
-  - TOX_ENV=py34-dj19
-  - TOX_ENV=py34-dj110
-  - TOX_ENV=py35-dj18
-  - TOX_ENV=py35-dj19
-  - TOX_ENV=py35-dj110
-  - TOX_ENV=lint
-  - TOX_ENV=cover
+  - 2.7
+  - 3.4
+  - 3.5
+  - 3.6
 
 install:
-  - pip install tox
+  - pip install tox-travis
 
 script:
-  - tox -e $TOX_ENV
+  - tox
+  - tox -e lint
+  - tox -e cover
 
 after_success:
   - coveralls
@@ -37,7 +24,6 @@ deploy:
   on:
     branch: master  # only in master branch
     tags: true  # deploy on tags only
-    condition: "${TOX_ENV} == 'cover'"  # deploy only once
 
 notifications:
   email:

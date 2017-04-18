@@ -47,7 +47,7 @@ def test_included_file_scope(scope, fixture_file):
 
     saved_file = os.path.join(
         base,
-        'settings',
+        'basic'
     )
 
     scope['__included_file__'] = saved_file

@@ -17,19 +17,22 @@
 .. image:: https://img.shields.io/pypi/pyversions/django-split-settings.svg
      :target: https://pypi.python.org/pypi/django-split-settings
 
-Organize Django settings into multiple files and directories.  Easily
+.. image:: https://readthedocs.org/projects/django-split-settings/badge/?version=latest
+      :target: http://django-split-settings.readthedocs.io/en/latest/?badge=latest
+
+Organize Django settings into multiple files and directories. Easily
 override and modify settings. Use wildcards in settings file paths
 and mark settings files as optional.
 
 
 Requirements
-============
+------------
 
 We support ``django`` versions from ``1.5`` up to the most recent one.
 
 
 Installation
-============
+------------
 
 Install by using ``pip``:
 
@@ -39,7 +42,7 @@ Install by using ``pip``:
 
 
 Usage
-=====
+-----
 
 Replace your existing ``settings.py`` with a list of components that
 make up your Django settings.  Preferably create a settings package
@@ -67,7 +70,7 @@ previous files.
 
 
 Tips and tricks
-===============
+---------------
 
 You can use wildcards in file paths:
 
@@ -81,7 +84,7 @@ files are NOT in alphabetical order.
 
 
 Do you want to contribute?
-==========================
+--------------------------
 
 Read the `contributing`_ file.
 
@@ -89,7 +92,7 @@ Read the `contributing`_ file.
 
 
 Version history
-===============
+---------------
 
 See `changelog`_ file.
 

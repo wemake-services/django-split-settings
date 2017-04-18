@@ -1,6 +1,22 @@
 Changelog
 ---------
 
+0.2.5
+~~~~~
+
+Improvements:
+
+* Added `python3.6` and `Django==1.11`
+* Fixed `tests/settings` structure with `basic/` folder
+* Added documentation, which is built with `Sphinx`
+* Updated `README.rst` with new logo
+* Updated `README.rst` with `docs` badge
+* Updated `CONTRIBUTING.rst` with new information
+
+Bugs:
+
+* Updated `README.rst` to be compatible with `PyPI`
+
 0.2.4
 ~~~~~
 

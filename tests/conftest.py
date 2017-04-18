@@ -43,6 +43,7 @@ def fixture_file():
     """
     return os.path.join(
         'settings',
+        'basic',
         'fixture_to_include.py'
     )
 
