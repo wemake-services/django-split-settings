@@ -19,13 +19,6 @@ def test_fast_open_ok():
     This test simulate file read using FastOpen class
     instead of build-in open()
     """
-    if sys.platform == 'win32':
-        try:
-            import win32file
-            import msvcrt
-            import ctypes
-        except ImportError:
-            pass
 
     base = os.path.dirname(__file__)
     file_path = os.path.join(base, 'settings/components/logging.py')
@@ -42,13 +35,6 @@ def test_fast_open_error():
     This test covers the IOError in FastOpener, when file does not exist
     or can't be opened
     """
-    if sys.platform == 'win32':
-        try:
-            import win32file
-            import msvcrt
-            import ctypes
-        except ImportError:
-            pass
 
     base = os.path.dirname(__file__)
     file_path = os.path.join(base, 'settings\\components\\logging_error.py')

@@ -89,7 +89,7 @@ You can improve settings files loading speed if requirements are satisfied:
 * running on Windows 7 or above
 * pypiwin32 library installed
 
-What you'll get:
+What you'll get - about 40% increase the speed of read operations:
 
 .. code:: python
 
@@ -117,7 +117,7 @@ What you'll get:
      >>> print('Best of 3 FastOpen running time: {} sec.'.format(min(loop_second.repeat(repeat=3, number=1000))))
 
      Best of 3 open() running time: 0.08507176789928023 sec.
-     Best of 3 f_open running time: 0.05143420851690639 sec.
+     Best of 3 FastOpen running time: 0.05143420851690639 sec.
 
 
 Do you want to contribute?
