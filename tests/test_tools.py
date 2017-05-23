@@ -14,6 +14,8 @@ from split_settings.tools import include
 from split_settings.tools import FastOpen, FileObjWrapper
 
 
+@pytest.mark.skipif('win32file' not in sys.modules,
+                    reason="requires Windows OS + pywin32 installation")
 def test_fast_open_ok():
     """
     This test simulate file read using FastOpen class
@@ -30,6 +32,8 @@ def test_fast_open_ok():
     assert len(data) > 0
 
 
+@pytest.mark.skipif('win32file' not in sys.modules,
+                    reason="requires Windows OS + pywin32 installation")
 def test_fast_open_error():
     """
     This test covers the IOError in FastOpener, when file does not exist
@@ -43,6 +47,8 @@ def test_fast_open_error():
         file = FastOpen(file_path, mode='rb')
 
 
+@pytest.mark.skipif('win32file' not in sys.modules,
+                    reason="requires Windows OS + pywin32 installation")
 def test_fast_open_buildin_usage():
     """
     Simulates absence of win32file module and so rollback
