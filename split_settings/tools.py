@@ -17,7 +17,6 @@ if sys.platform == 'win32':
     try:
         import win32file
         import msvcrt
-        import ctypes
     except ImportError: # pragma: no cover
         pass
 
