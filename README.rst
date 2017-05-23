@@ -83,6 +83,43 @@ probably in the same order as what ``ls -U`` would list them. The
 files are NOT in alphabetical order.
 
 
+Windows only!
+
+You can improve settings files loading speed if requirements are satisfied:
+* running on Windows 7 or above
+* pypiwin32 library installed
+
+What you'll get:
+
+.. code:: python
+
+     # Testing file "test.bin" with size ~ 100 Kb
+
+     code = '''
+     with open("test.bin", "rb") as f:
+       data = f.read()
+     '''
+
+     loop_first = timeit.Timer(stmt=code)
+
+     setup = '''
+     from f_open.file import FastOpen
+     '''
+
+     code = '''
+     with FastOpen("test.bin") as file:
+       data = file.read()
+     '''
+
+     loop_second = timeit.Timer(stmt=code, setup=setup)
+
+     >>> print('Best of 3 open() running time: {} sec.'.format(min(loop_first.repeat(repeat=3, number=1000))))
+     >>> print('Best of 3 FastOpen running time: {} sec.'.format(min(loop_second.repeat(repeat=3, number=1000))))
+
+     Best of 3 open() running time: 0.08507176789928023 sec.
+     Best of 3 f_open running time: 0.05143420851690639 sec.
+
+
 Do you want to contribute?
 --------------------------
 

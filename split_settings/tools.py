@@ -61,32 +61,10 @@ class FileObjWrapper(object):
         Returns: string
         """
         if not size:
-            size = self.__cluster_size
+            size = 4096
         win32file.SetFilePointer(self.handler, 0, win32file.FILE_BEGIN)
         data = win32file.ReadFile(self.handler, size, None)[1]
         return data
-
-    @property
-    def __cluster_size(self):
-        """
-        Property to get file system cluster size to increase
-        read operation performance.
-        If cluster size can't be obtained - return standard
-        cluster size (4096)
-
-        Returns: int
-        """
-        sectors_per_cluster = ctypes.c_ulonglong(0)
-        bytes_per_sector = ctypes.c_ulonglong(0)
-        root_path_name = ctypes.c_wchar_p(os.getcwd())
-
-        ctypes.windll.kernel32.GetDiskFreeSpaceW(root_path_name,
-                                                 ctypes.pointer(sectors_per_cluster),
-                                                 ctypes.pointer(bytes_per_sector),
-                                                 None,
-                                                 None)
-        cluster_size = sectors_per_cluster.value * bytes_per_sector.value
-        return cluster_size if cluster_size > 0 else 4096
 
     def close(self):
         """
