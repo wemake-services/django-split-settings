@@ -43,6 +43,7 @@ class FileObjWrapper(object):
     def __init__(self, file, *args, **kwargs):
         try:
             file_descriptor = os.open(file, os.O_RDONLY|os.O_BINARY)
+            self.full_size = os.fstat(file_descriptor).st_size
             self.handler = msvcrt.get_osfhandle(file_descriptor)
         except os.error as err:
             exc = IOError(err.strerror)
@@ -60,7 +61,7 @@ class FileObjWrapper(object):
         Returns: string
         """
         if not size:
-            size = 4096
+            size = self.full_size
         win32file.SetFilePointer(self.handler, 0, win32file.FILE_BEGIN)
         data = win32file.ReadFile(self.handler, size, None)[1]
         return data
