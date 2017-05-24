@@ -13,7 +13,99 @@ import os
 import sys
 import types
 
+if sys.platform == 'win32':
+    try:
+        import win32file
+        import msvcrt
+    except ImportError: # pragma: no cover
+        pass
+
+
 __all__ = ['optional', 'include']
+
+
+class FileObjWrapper(object):
+    """
+    This class used to implement only read() method on file object
+    basically for compatibility reasons with I/O API
+
+    Args:
+        file: file to read from
+        *args: used as dummy to accept build-in open() function args which further ignored
+
+    Returns:
+        new instance of :class:`FileObjWrapper`
+
+    Raises:
+        IOError: if a required file is not found
+    """
+
+    def __init__(self, file, *args, **kwargs):
+        try:
+            file_descriptor = os.open(file, os.O_RDONLY|os.O_BINARY)
+            self.full_size = os.fstat(file_descriptor).st_size
+            self.handler = msvcrt.get_osfhandle(file_descriptor)
+        except os.error as err:
+            exc = IOError(err.strerror)
+            err.__suppress_context__ = True
+            err.__traceback__ = None
+            raise exc
+
+    def read(self, size=None):
+        """
+        Reads from file some quantity of data and returns it as a string
+
+        Args:
+            n: bytes size to read
+
+        Returns: string
+        """
+        if not size:
+            size = self.full_size
+        win32file.SetFilePointer(self.handler, 0, win32file.FILE_BEGIN)
+        data = win32file.ReadFile(self.handler, size, None)[1]
+        return data
+
+    def close(self):
+        """
+        Close file handler to free resources
+        """
+        win32file.CloseHandle(self.handler)
+        del self.handler
+
+
+class FastOpen(object):
+    """
+    This class used as replacement of build-in open() function.
+
+    The main purpose - increase file read speed on Windows-based platforms.
+    If f_open instance running on Windows and win32file module (from pywin32)
+    loaded then file open/read operations is done by this instance.
+    Otherwise build-in open() function invokes.
+
+    Usage::
+
+        with f_open('file') as file:
+            data = file.read()
+
+    Parameters:
+        name: file to open
+        *args: arguments for build-in open() function
+    """
+
+    def __init__(self, name, *args, **kwargs):
+        if (sys.platform == 'win32') and ('win32file' in sys.modules):
+            self._opener = FileObjWrapper
+        else:
+            self._opener = open
+
+        self._handler_obj = self._opener(name, *args, **kwargs)
+
+    def __enter__(self):
+        return self._handler_obj
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._handler_obj.close()
 
 
 def optional(filename):
@@ -97,7 +189,7 @@ def include(*args, **kwargs):
             included_files.append(included_file)
 
             scope['__included_file__'] = included_file
-            with open(included_file, 'rb') as to_compile:
+            with FastOpen(included_file, 'rb') as to_compile:
                 exec(compile(to_compile.read(), included_file, 'exec'), scope)
 
             # add dummy modules to sys.modules to make runserver autoreload

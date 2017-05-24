@@ -6,11 +6,62 @@ This file contains unit-tests.
 """
 
 import os
-
+import sys
 import six
 import pytest
 
 from split_settings.tools import include
+from split_settings.tools import FastOpen, FileObjWrapper
+
+
+@pytest.mark.skipif('win32file' not in sys.modules,
+                    reason="requires Windows OS + pywin32 installation")
+def test_fast_open_ok():
+    """
+    This test simulate file read using FastOpen class
+    instead of build-in open()
+    """
+
+    base = os.path.dirname(__file__)
+    file_path = os.path.join(base, 'settings/components/logging.py')
+
+    with FastOpen(file_path, mode='rb') as file:
+        data = file.read()
+
+    assert isinstance(data, bytes)
+    assert len(data) > 0
+
+
+@pytest.mark.skipif('win32file' not in sys.modules,
+                    reason="requires Windows OS + pywin32 installation")
+def test_fast_open_error():
+    """
+    This test covers the IOError in FastOpener, when file does not exist
+    or can't be opened
+    """
+
+    base = os.path.dirname(__file__)
+    file_path = os.path.join(base, 'settings\\components\\logging_error.py')
+
+    with pytest.raises(IOError):
+        file = FastOpen(file_path, mode='rb')
+
+
+@pytest.mark.skipif('win32file' not in sys.modules,
+                    reason="requires Windows OS + pywin32 installation")
+def test_fast_open_buildin_usage():
+    """
+    Simulates absence of win32file module and so rollback
+    to using build-in open() function instead of FileObjWrapper
+    """
+    base = os.path.dirname(__file__)
+    file_path = os.path.join(base, 'settings/components/logging.py')
+
+    if 'win32file' in sys.modules:
+        del sys.modules['win32file']
+
+    with FastOpen(file_path, mode='rb') as file:
+        assert not isinstance(file, FileObjWrapper)
 
 
 def test_missing_file_error(scope):

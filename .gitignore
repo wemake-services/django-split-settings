@@ -19,6 +19,7 @@ downloads/
 eggs/
 lib/
 .eggs/
+.pylint.d/
 lib64/
 parts/
 sdist/
