@@ -29,6 +29,7 @@ Requirements
 ------------
 
 We support ``django`` versions from ``1.5`` up to the most recent one.
+This package has no dependencies itself.
 
 
 Installation

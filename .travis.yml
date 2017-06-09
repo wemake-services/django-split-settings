@@ -7,12 +7,10 @@ python:
   - 3.6
 
 install:
-  - pip install tox-travis
+  - pip install tox-travis wheel
 
 script:
   - tox
-  - tox -e lint
-  - tox -e cover
 
 after_success:
   - coveralls
@@ -21,6 +19,7 @@ deploy:
   provider: pypi
   user: sobolevn
   password: $PYPI_PASSWORD  # password is hidden
+  distributions: sdist bdist_wheel
   on:
     branch: master  # only in master branch
     tags: true  # deploy on tags only

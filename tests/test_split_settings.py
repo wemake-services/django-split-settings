@@ -5,8 +5,6 @@
 This file contains tests with base functionality.
 """
 
-from django.conf import settings
-
 
 def test_merge(merged):
     """
@@ -17,10 +15,13 @@ def test_merge(merged):
     assert hasattr(merged, 'STATIC_ROOT')
 
 
-def test_override(merged):
+def test_override(merged, monkeypatch):
     """
     This setting must be overridden in the testing.py
     """
+    monkeypatch.setenv('DJANGO_SETTINGS_MODULE', 'tests.settings.merged')
+
+    from django.conf import settings
 
     # noinspection PyUnresolvedReferences
     assert merged.STATIC_ROOT == settings.STATIC_ROOT

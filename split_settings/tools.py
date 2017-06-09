@@ -76,7 +76,7 @@ def include(*args, **kwargs):
 
     including_file = scope.get(
         '__included_file__',
-        scope['__file__'].rstrip('c')
+        scope['__file__'].rstrip('c'),
     )
     conf_path = os.path.dirname(including_file)
 

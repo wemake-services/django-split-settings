@@ -44,7 +44,7 @@ def fixture_file():
     return os.path.join(
         'settings',
         'basic',
-        'fixture_to_include.py'
+        'fixture_to_include.py',
     )
 
 
@@ -55,8 +55,8 @@ def merged():
     """
     This fixture returns basic merged settings example.
     """
-    from tests import settings
-    return settings
+    from tests.settings import merged as _merged
+    return _merged
 
 
 @fixture

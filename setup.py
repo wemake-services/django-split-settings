@@ -1,21 +1,37 @@
 # -*- coding: utf-8 -*-
 
 """
+Setup file for django-split-settings.
+
 Visit https://pypi.python.org/pypi/django-split-settings
 for more information.
 """
 
 import io
+
 from setuptools import setup
+
 from split_settings import __version__
 
-
-INSTALL_REQUIRES = ['Django>=1.5', ]
+INSTALL_REQUIRES = []  # no deps
 
 TESTS_REQUIRE = [
     'six',
-    'pytest',
-    'pytest-env',
+
+    # pytest plugins:
+    'pytest-cov',
+    'pytest-isort',
+
+    # Linting:
+    'flake8-builtins',
+    'flake8-commas',
+    'flake8-quotes',
+    'flake8<3.3.0',  # fixes dependency resolution
+    'pytest-flake8',
+
+    # This line should be the last one:
+    # https://github.com/pytest-dev/pytest-runner/issues/11
+    'pytest==3.0.7',  # should be the last
 ]
 
 SETUP_REQUIRES = [
@@ -72,5 +88,5 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-    ]
+    ],
 )
