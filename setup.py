@@ -26,7 +26,7 @@ TESTS_REQUIRE = [
     'flake8-builtins',
     'flake8-commas',
     'flake8-quotes',
-    'flake8<3.3.0',  # fixes dependency resolution
+    'flake8<3.6.0',  # fixes dependency resolution
     'pytest-flake8',
 
     # This line should be the last one:
