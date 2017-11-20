@@ -31,7 +31,7 @@ TESTS_REQUIRE = [
 
     # This line should be the last one:
     # https://github.com/pytest-dev/pytest-runner/issues/11
-    'pytest==3.0.7',  # should be the last
+    'pytest==3.2.5',  # should be the last
 ]
 
 SETUP_REQUIRES = [
