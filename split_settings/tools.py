@@ -91,6 +91,7 @@ def include(*args, **kwargs):
             raise IOError('No such file: %s' % pattern)
 
         for included_file in files_to_include:
+            included_file = os.path.abspath(included_file)
             if included_file in included_files:
                 continue
 
