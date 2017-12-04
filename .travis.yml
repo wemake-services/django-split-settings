@@ -13,6 +13,7 @@ script:
   - tox
 
 after_success:
+  - pip install coveralls
   - coveralls
 
 deploy:
@@ -21,8 +22,8 @@ deploy:
   password: $PYPI_PASSWORD  # password is hidden
   distributions: sdist bdist_wheel
   on:
-    branch: master  # only in master branch
-    tags: true  # deploy on tags only
+    branch: master
+    tags: true
 
 notifications:
   email:

@@ -46,7 +46,7 @@ Usage
 -----
 
 Replace your existing ``settings.py`` with a list of components that
-make up your Django settings.  Preferably create a settings package
+make up your Django settings. Preferably create a settings package
 that contains all the files.
 
 Here's a minimal example:
@@ -68,6 +68,10 @@ in that order from the subdirectory called ``components/``.
 **Note:** The local context is passed on to each file, so each
 following file can access and modify the settings declared in the
 previous files.
+
+We also made a in-depth `tutorial`_.
+
+.. _tutorial: https://medium.com/wemake-services/managing-djangos-settings-e2b7f496120d
 
 
 Tips and tricks
