@@ -26,12 +26,16 @@ TESTS_REQUIRE = [
     'flake8-builtins',
     'flake8-commas',
     'flake8-quotes',
-    'flake8<3.3.0',  # fixes dependency resolution
+    'flake8-pep3101',
+    'flake8-comprehensions',
+    'flake8-blind-except',
+    'pep8-naming',
+    'flake8',  # fixes dependency resolution
     'pytest-flake8',
 
     # This line should be the last one:
     # https://github.com/pytest-dev/pytest-runner/issues/11
-    'pytest==3.0.7',  # should be the last
+    'pytest',  # should be the last line
 ]
 
 SETUP_REQUIRES = [
@@ -71,18 +75,12 @@ setup(
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: 1.5',
-        'Framework :: Django :: 1.6',
-        'Framework :: Django :: 1.7',
-        'Framework :: Django :: 1.8',
-        'Framework :: Django :: 1.9',
-        'Framework :: Django :: 1.10',
         'Framework :: Django :: 1.11',
+        'Framework :: Django :: 2.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',

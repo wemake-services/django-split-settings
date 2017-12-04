@@ -31,7 +31,8 @@ Read this `medium`_ post for more information.
 Requirements
 ------------
 
-We support ``django`` versions from ``1.5`` up to the most recent one.
+While this package will most likely work with the most versions of ``django``, we do not officially support any versions except the latest release and the current LTS version, which are ``1.11`` and ``2.0`` right now.
+
 This package has no dependencies itself.
 
 
@@ -43,6 +44,8 @@ Install by using ``pip``:
 .. code:: bash
 
     pip install django-split-settings
+
+We also recommend to try `pipenv <https://docs.pipenv.org/>`_ to handle dependencies.
 
 
 Usage

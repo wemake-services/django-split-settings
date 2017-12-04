@@ -1,6 +1,22 @@
 Changelog
 ---------
 
+0.3.0
+~~~~~
+
+Improvements:
+
+* Added `Django==2.0`
+* Removed old versions of `Django` from test matrix
+* Removed `python3.4` from test matrix
+* Documentation updates
+* Adds more `flake8` plugins to enforce strict style
+
+Bugs:
+
+* Fixes Windows problems via `#21 <https://github.com/sobolevn/django-split-settings/pull/21>`_
+
+
 0.2.5
 ~~~~~
 
@@ -17,6 +33,7 @@ Bugs:
 
 * Updated `README.rst` to be compatible with `PyPI`
 
+
 0.2.4
 ~~~~~
 
@@ -30,6 +47,7 @@ Bugs:
 * Removed `run_coveralls.py`, added `after_success` section in `.travis.yml`
 * Changed the `README.rst` to be shorter
 
+
 0.2.3
 ~~~~~
 
@@ -41,6 +59,7 @@ Bugs:
 * Added tests for `django@1.10` in `tox` and `travis`
 * Removed `3.2` and `3.3` from `setup.py` since these versions were not tested anyway
 
+
 0.2.2
 ~~~~~
 
@@ -48,6 +67,7 @@ Bugs:
 * Tests structure is changed
 * Removed example
 * Changed how `MANIFEST.in` is defined
+
 
 0.2.1
 ~~~~~
@@ -58,6 +78,7 @@ Bugs:
 * Added ``run_coveralls.py`` to work on both ``CI`` and local tests.
 * Style fixes.
 
+
 0.2.0
 ~~~~~
 
@@ -65,20 +86,24 @@ Bugs:
 * Added ``coverage`` information and badge.
 * Removed ``pep8`` utility, now using ``pylint``.
 
+
 0.1.3
 ~~~~~
 
 * Python 3.5 support, Django 1.9 test-support, documentation updates.
+
 
 0.1.2
 ~~~~~
 
 * Fixed Python 3 compatibility. Fixed `issue #7`_.
 
+
 0.1.1
 ~~~~~
 
 * Fixed `issue #1`_: now works with Gunicorn, too
+
 
 0.1.0
 ~~~~~

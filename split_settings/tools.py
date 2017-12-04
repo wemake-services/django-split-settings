@@ -88,7 +88,7 @@ def include(*args, **kwargs):
         # optional)
         files_to_include = glob.glob(pattern)
         if not files_to_include and not isinstance(conf_file, _Optional):
-            raise IOError('No such file: %s' % pattern)
+            raise IOError('No such file: {}'.format(pattern))
 
         for included_file in files_to_include:
             included_file = os.path.abspath(included_file)
@@ -103,8 +103,9 @@ def include(*args, **kwargs):
 
             # add dummy modules to sys.modules to make runserver autoreload
             # work with settings components
-            module_name = ('_split_settings.%s' %
-                           conf_file[:conf_file.rfind('.')].replace('/', '.'))
+            module_name = '_split_settings.{}'.format(
+                conf_file[:conf_file.rfind('.')].replace('/', '.'),
+            )
 
             module = types.ModuleType(str(module_name))
             module.__file__ = included_file
