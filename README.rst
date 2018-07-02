@@ -86,13 +86,21 @@ Tips and tricks
 
 You can use wildcards in file paths:
 
+.. code-block:: none
+
+    settings.d/
+    ├── 010-base.py
+    ├── 020-database.py
+    ├── 051-module-a.py
+    ├── 052-module-b.py
+    └── 090-secrets.py
+
+
 .. code:: python
 
-    include('components/my_app/*.py')
+    include('settings.d/*.py')
 
-Note that files are included in the order that ``glob`` returns them,
-probably in the same order as what ``ls -U`` would list them. The
-files are NOT in alphabetical order.
+**Note:** Files are included in alphabetical order.
 
 
 Do you want to contribute?
