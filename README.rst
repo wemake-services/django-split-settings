@@ -84,6 +84,7 @@ We also made a in-depth `tutorial`_.
 Tips and tricks
 ---------------
 
+
 You can use wildcards in file paths:
 
 .. code:: python
@@ -93,6 +94,17 @@ You can use wildcards in file paths:
 Note that files are included in the order that ``glob`` returns them,
 probably in the same order as what ``ls -U`` would list them. The
 files are NOT in alphabetical order.
+
+You can modify common settings in environment settings simply importing them
+
+.. code:: python
+
+    # local_settings.py
+    from components.base import INSTALLED_APPS
+
+    INSTALLED_APPS += (
+      'raven.contrib.django.raven_compat',
+    )
 
 
 Do you want to contribute?
