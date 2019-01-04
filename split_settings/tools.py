@@ -63,13 +63,9 @@ def include(*args, **kwargs):
     Raises:
         IOError: if a required settings file is not found
     """
-
-    if 'scope' not in kwargs:
-        # we are getting globals() from previous frame
-        # globals - it is caller's globals()
-        scope = inspect.stack()[1][0].f_globals
-    else:
-        scope = kwargs.pop('scope')
+    # we are getting globals() from previous frame
+    # globals - it is caller's globals()
+    scope = kwargs.pop('scope', inspect.stack()[1][0].f_globals)
 
     scope.setdefault('__included_files__', [])
     included_files = scope.get('__included_files__')
