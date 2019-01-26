@@ -32,7 +32,7 @@ Read this `medium`_ post for more information. Also, check this `example project
 Requirements
 ------------
 
-While this package will most likely work with the most versions of ``django``, we do not officially support any versions except the latest release and the current LTS version, which are ``1.11`` and ``2.0`` right now.
+While this package will most likely work with the most versions of ``django``, we do not officially support any versions except the latest release and the current LTS version, which are ``1.11`` and ``2.1`` right now.
 
 This package has no dependencies itself.
 

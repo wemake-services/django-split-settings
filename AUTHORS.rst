@@ -11,3 +11,4 @@ Authors
 .. _`roxeteer`: https://github.com/roxeteer
 .. _`sobolevn`: https://github.com/sobolevn
 .. _`phpdude`: https://github.com/phpdude
+.. _`davitovmasyan`: https://github.com/davitovmasyan
