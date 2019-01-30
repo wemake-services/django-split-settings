@@ -99,8 +99,9 @@ def include(*args, **kwargs):
 
             # add dummy modules to sys.modules to make runserver autoreload
             # work with settings components
+            rel_path = os.path.relpath(included_file)
             module_name = '_split_settings.{}'.format(
-                conf_file[:conf_file.rfind('.')].replace('/', '.'),
+                rel_path[:rel_path.rfind('.')].replace('/', '.'),
             )
 
             module = types.ModuleType(str(module_name))
