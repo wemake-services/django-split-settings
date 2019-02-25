@@ -30,7 +30,7 @@ TESTS_REQUIRE = [
     'flake8-comprehensions',
     'flake8-blind-except',
     'pep8-naming',
-    'flake8==3.7.5',  # fixes dependency resolution
+    'flake8==3.7.6',  # fixes dependency resolution
     'pytest-flake8',
 
     # This line should be the last one:
