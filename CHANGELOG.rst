@@ -1,6 +1,14 @@
 Changelog
 ---------
 
+0.3.1
+~~~~~~~~~~
+
+Improvements:
+
+* Added support for django till to 2.2 version.
+
+
 0.3.0
 ~~~~~
 
