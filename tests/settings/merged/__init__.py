@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from split_settings.tools import optional, include
+from split_settings.tools import include, optional
 
 include(
     # Components:
