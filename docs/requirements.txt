@@ -1,6 +1,6 @@
 # This file is used to setup env
 # to generate documentation.
 
-Sphinx==2.1.0
+Sphinx==2.1.1
 sphinx-readable-theme==1.3.0
 sphinxcontrib-napoleon==0.7
