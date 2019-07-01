@@ -1,8 +1,23 @@
 Changelog
 ---------
 
+1.0.0
+~~~~~
+
+Breaking changes:
+
+* Drops `python2` support
+* Drops `django2.0` support
+
+Improvements:
+
+* Moves to `poetry`
+* Adds `mypy` support
+* Adds `wemake-python-styleguide` support
+* Adds extra CI checks: `safety`, `doc8`
+
 0.3.1
-~~~~~~~~~~
+~~~~~
 
 Improvements:
 

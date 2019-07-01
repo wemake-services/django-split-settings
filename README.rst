@@ -1,24 +1,31 @@
 
-.. image:: https://github.com/sobolevn/django-split-settings/blob/master/media/logo-black.png?raw=true
-     :target: https://github.com/sobolevn/django-split-settings
-     :align: center
+.. image:: https://github.com/sobolevn/django-split-settings/blob/master/docs/_static/logo-black.png?raw=true
+   :target: https://github.com/sobolevn/django-split-settings
+   :align: center
 
 ----------
 
+.. image:: https://img.shields.io/badge/%20-wemake.services-green.svg?label=%20&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAbUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP%2F%2F%2F5TvxDIAAAAIdFJOUwAjRA8xXANAL%2Bv0SAAAADNJREFUGNNjYCAIOJjRBdBFWMkVQeGzcHAwksJnAPPZGOGAASzPzAEHEGVsLExQwE7YswCb7AFZSF3bbAAAAABJRU5ErkJggg%3D%3D
+   :target: https://wemake.services
+
 .. image:: https://travis-ci.org/sobolevn/django-split-settings.svg?branch=master
-     :target: https://travis-ci.org/sobolevn/django-split-settings
+   :target: https://travis-ci.org/sobolevn/django-split-settings
 
 .. image:: https://coveralls.io/repos/github/sobolevn/django-split-settings/badge.svg?branch=master
-     :target: https://coveralls.io/github/sobolevn/django-split-settings?branch=master
+   :target: https://coveralls.io/github/sobolevn/django-split-settings?branch=master
 
 .. image:: https://badge.fury.io/py/django-split-settings.svg
-     :target: http://badge.fury.io/py/django-split-settings
+   :target: http://badge.fury.io/py/django-split-settings
 
 .. image:: https://img.shields.io/pypi/pyversions/django-split-settings.svg
-     :target: https://pypi.python.org/pypi/django-split-settings
+   :target: https://pypi.python.org/pypi/django-split-settings
 
 .. image:: https://readthedocs.org/projects/django-split-settings/badge/?version=latest
-      :target: http://django-split-settings.readthedocs.io/en/latest/?badge=latest
+   :target: http://django-split-settings.readthedocs.io/en/latest/?badge=latest
+
+.. image:: https://img.shields.io/badge/style-wemake-000000.svg
+   :target: https://github.com/wemake-services/wemake-python-styleguide
+
 
 Organize Django settings into multiple files and directories. Easily
 override and modify settings. Use wildcards in settings file paths
@@ -32,7 +39,7 @@ Read this `medium`_ post for more information. Also, check this `example project
 Requirements
 ------------
 
-While this package will most likely work with the most versions of ``django``, we do not officially support any versions except the latest release and the current LTS version, which are ``1.11`` and ``2.0`` right now.
+While this package will most likely work with the most versions of ``django``, we do not officially support any versions except the latest release and the current LTS version, which are ``1.11`` and ``2.2`` right now.
 
 This package has no dependencies itself.
 
@@ -40,13 +47,9 @@ This package has no dependencies itself.
 Installation
 ------------
 
-Install by using ``pip``:
-
 .. code:: bash
 
     pip install django-split-settings
-
-We also recommend to try `pipenv <https://docs.pipenv.org/>`_ to handle dependencies.
 
 
 Usage

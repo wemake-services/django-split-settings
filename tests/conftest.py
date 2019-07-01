@@ -21,7 +21,7 @@ class Scope(dict):
         """
         Adding `__file__` to make things work in `tools.py`.
         """
-        super(Scope, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self['__file__'] = __file__
 
 

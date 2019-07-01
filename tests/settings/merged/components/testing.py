@@ -1,4 +1,6 @@
-import os.path
+# -*- coding: utf-8 -*-
+
+import os
 
 # This settings will override settings in static.py
 STATIC_ROOT = 'test_folder'
