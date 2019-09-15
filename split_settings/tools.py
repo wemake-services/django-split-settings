@@ -19,7 +19,7 @@ __all__ = ('optional', 'include')  # noqa: WPS410
 _INCLUDED_FILE = '__included_file__'
 
 
-def optional(filename):
+def optional(filename: str) -> str:
     """
     This functions is used for compatibility reasons.
 
@@ -43,7 +43,7 @@ class _Optional(str):  # noqa: WPS600
     """
 
 
-def include(*args, **kwargs):  # noqa: WPS210, C901
+def include(*args: str, **kwargs) -> None:  # noqa: WPS210, C901
     """
     Used for including Django project settings from multiple files.
 

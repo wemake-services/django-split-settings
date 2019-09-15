@@ -16,6 +16,7 @@ Improvements:
 - Adds `mypy` support
 - Adds `wemake-python-styleguide` support
 - Adds extra CI checks: `safety`, `doc8`
+- Adds `py.typed` file to package type information
 
 
 ## 0.3.1
