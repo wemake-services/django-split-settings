@@ -19,5 +19,5 @@ include(
     optional('components/missing_file.py'),
 
     # Scope:
-    scope=globals(),
+    scope=globals(),  # noqa: WPS421
 )

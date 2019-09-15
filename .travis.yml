@@ -1,30 +1,33 @@
-dist: xenial   # required for Python >= 3.7
+dist: xenial
 language: python
 
 python:
-  - 2.7
-  - 3.5
   - 3.6
   - 3.7
 
+env:
+  - DJANGO_VERSION: "'Django~=1.11'"
+  - DJANGO_VERSION: "'Django~=2.0'"
+  - DJANGO_VERSION: "'Django~=2.1'"
+  - DJANGO_VERSION: "'Django~=2.2'"
+
+before_install:
+  - pip freeze | xargs pip uninstall -y
+  - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+  - source "$HOME/.poetry/env"
+
 install:
-  - pip install tox-travis wheel
+  - poetry install
+  - pip install -U "$DJANGO_VERSION"
 
 script:
-  - tox
-
-after_success:
-  - pip install coveralls
-  - coveralls
-
-deploy:
-  provider: pypi
-  user: sobolevn
-  password: $PYPI_PASSWORD  # password is hidden
-  distributions: sdist bdist_wheel
-  on:
-    branch: master
-    tags: true
+  - poetry run flake8 .
+  - poetry run mypy split_settings
+  - poetry run pytest
+  - poetry run doc8 -q docs
+  - poetry check
+  - poetry run pip check
+  - poetry run safety check --bare --full-report
 
 notifications:
   email:

@@ -1,2 +1,0 @@
-recursive-include split_settings *.py
-include LICENSE.txt README.rst

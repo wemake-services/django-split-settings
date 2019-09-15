@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-# pylint: disable=no-member
-
-"""
-This file contains unit-tests.
-"""
 
 import os
 
@@ -12,19 +7,17 @@ import six
 
 from split_settings.tools import include
 
+_FIXTURE_VALUE = 'FIXTURE_VALUE'
+
 
 def test_missing_file_error(scope):
-    """
-    This test covers the IOError, when file does not exist.
-    """
+    """This test covers the IOError, when file does not exist."""
     with pytest.raises(IOError):
         include('does-not-exist.py', scope=scope)
 
 
 def test_keys_count(scope, fixture_file):
-    """
-    Scope must contain all base python attrs and a custom value.
-    """
+    """Scope must contain all base python attrs and a custom value."""
     include(fixture_file, scope=scope)
 
     # Keys:
@@ -34,50 +27,40 @@ def test_keys_count(scope, fixture_file):
 
 
 def test_included_file_scope(scope, fixture_file):
-    """
-    This test emulates gunicorn behavior with `__included_file__` value.
-    """
+    """Test emulates gunicorn behavior with `__included_file__` value."""
     base = os.path.dirname(__file__)
-
     saved_file = os.path.join(base, 'basic')
-
     scope['__included_file__'] = saved_file
 
     include(fixture_file, scope=scope)
 
-    assert 'FIXTURE_VALUE' in scope
+    assert _FIXTURE_VALUE in scope
     assert scope['__included_file__'] == saved_file
 
 
 def test_empty_included_file(scope, fixture_file):
-    """
-    This test simulates normal behavior when no `__included_file__`
-    is provided in the `scope`.
-    """
+    """Test when there's no `__included_file__`."""
     include(fixture_file, scope=scope)
 
-    assert 'FIXTURE_VALUE' in scope
+    assert _FIXTURE_VALUE in scope
     assert '__included_file__' not in scope
 
 
 def test_unicode_passed(scope, fixture_file):
-    """
-    Tests the `unicode` filename in `python2`.
-    """
+    """Tests the `unicode` filename in `python2`."""
     include(
         six.text_type(fixture_file),  # unicode on py2, str on py3
         scope=scope,
     )
-
-    assert 'FIXTURE_VALUE' in scope
+    assert _FIXTURE_VALUE in scope
 
 
 def test_caller_scope_automatically(fixture_file):
     """
-    Tests `include` function for automatic `globals()`
-    extraction from execution stack.
+    Tests `include` function for automatic `globals()` extraction.
+
     Now you can omit positional argument `scope`.
     """
     include(fixture_file)
 
-    assert 'FIXTURE_VALUE' in globals()
+    assert _FIXTURE_VALUE in globals()  # noqa: WPS421

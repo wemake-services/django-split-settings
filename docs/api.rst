@@ -2,7 +2,7 @@ API
 ===
 
 .. automodule:: split_settings.tools
-   :members:
+  :members:
 
-   .. autoclass:: _Optional
-      :members:
+  .. autoclass:: _Optional
+    :members:
