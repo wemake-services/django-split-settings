@@ -18,16 +18,16 @@ before_install:
 
 install:
   - poetry install
-  - pip install "$DJANGO_VERSION"
+  - pip install -U "$DJANGO_VERSION"
 
 script:
-    - poetry run flake8 .
-    - poetry run mypy split_settings
-    - poetry run pytest
-    - poetry run doc8 -q docs
-    - poetry check
-    - poetry run pip check
-    - poetry run safety check --bare --full-report
+  - poetry run flake8 .
+  - poetry run mypy split_settings
+  - poetry run pytest
+  - poetry run doc8 -q docs
+  - poetry check
+  - poetry run pip check
+  - poetry run safety check --bare --full-report
 
 notifications:
   email:

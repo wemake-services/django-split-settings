@@ -31,9 +31,9 @@ Organize Django settings into multiple files and directories. Easily
 override and modify settings. Use wildcards in settings file paths
 and mark settings files as optional.
 
-Read this `medium`_ post for more information. Also, check this `example project`_.
+Read this `blog`_ post for more information. Also, check this `example project`_.
 
-.. _medium: https://medium.com/wemake-services/managing-djangos-settings-e2b7f496120d
+.. _blog: https://sobolevn.me/2017/04/managing-djangos-settings
 .. _`example project`: https://github.com/wemake-services/wemake-django-template
 
 Requirements
