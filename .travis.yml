@@ -28,6 +28,10 @@ script:
   - poetry run pip check
   - poetry run safety check --bare --full-report
 
+after_success:
+  - pip install coveralls
+  - coveralls
+
 notifications:
   email:
     on_success: never
