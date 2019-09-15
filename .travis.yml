@@ -6,10 +6,10 @@ python:
   - 3.7
 
 env:
-  - DJANGO_VERSION: 'Django>=1.11<1.12'
-  - DJANGO_VERSION: 'Django>=2.0,<2.1'
-  - DJANGO_VERSION: 'Django>=2.1,<2.2'
-  - DJANGO_VERSION: 'Django>=2.2,<2.3'
+  - DJANGO_VERSION: "'Django>=1.11<1.12'"
+  - DJANGO_VERSION: "'Django>=2.0,<2.1'"
+  - DJANGO_VERSION: "'Django>=2.1,<2.2'"
+  - DJANGO_VERSION: "'Django>=2.2,<2.3'"
 
 before_install:
   - pip freeze | xargs pip uninstall -y
