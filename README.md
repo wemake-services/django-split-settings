@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/sobolevn/django-split-settings/blob/master/media/logo-black.png?raw=true"
+  <img src="https://raw.githubusercontent.com/sobolevn/django-split-settings/master/docs/_static/logo-black.png"
        alt="django-split-settings logo">
 </p>
 
