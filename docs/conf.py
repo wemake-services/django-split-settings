@@ -59,6 +59,12 @@ extensions = [
 
     # Used to write beautiful docstrings:
     'sphinx.ext.napoleon',
+
+    # Used to include .md files:
+    'm2r',
+
+    # Used to insert typehints into the final docs:
+    'sphinx_autodoc_typehints',
 ]
 
 autoclass_content = 'class'
@@ -92,6 +98,10 @@ pygments_style = 'sphinx'
 
 add_module_names = False
 
+# Set `typing.TYPE_CHECKING` to `True`:
+# https://pypi.org/project/sphinx-autodoc-typehints/
+set_type_checking_flag = False
+
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -99,7 +109,7 @@ add_module_names = False
 # a list of builtin themes.
 #
 html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
-html_theme = 'readable'
+html_theme = 'alabaster'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -113,9 +123,11 @@ html_static_path = ['_static']
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
     '**': [
+        'about.html',
+        'navigation.html',
         'badges.html',
-        'localtoc.html',
         'moreinfo.html',
+        'github.html',
         'searchbox.html',
     ],
 }

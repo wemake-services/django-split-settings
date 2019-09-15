@@ -37,7 +37,7 @@ Improvements:
 
 Bugs:
 
-- Fixes Windows problems via [#21](https://github.com/sobolevn/django-split-settings/pull/21>)
+- Fixes Windows problems via [#21](https://github.com/sobolevn/django-split-settings/pull/21)
 
 
 ## 0.2.5

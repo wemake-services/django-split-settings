@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/sobolevn/django-split-settings/blob/master/docs/_static/logo-black.png?raw=true"
-       alt="wemake-python-styleguide logo">
+  <img src="https://github.com/sobolevn/django-split-settings/blob/master/media/logo-black.png?raw=true"
+       alt="django-split-settings logo">
 </p>
 
 ---
@@ -95,9 +95,9 @@ INSTALLED_APPS += (
 
 ## Do you want to contribute?
 
-Read the [`CONTRIBUTING.md`](https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.md) file.
+Read the [CONTRIBUTING.md](https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.md) file.
 
 
 ## Version history
 
-See [`CHANGELOG.md`](https://github.com/sobolevn/django-split-settings/blob/master/CHANGELOG.md) file.
+See [CHANGELOG.md](https://github.com/sobolevn/django-split-settings/blob/master/CHANGELOG.md) file.
