@@ -12,7 +12,9 @@ authors = [
   "Antti Kaihola",
 ]
 license = "BSD-2-Clause"
-include = ["split_settings/**/*.py"]
+packages = [
+  { include = "split_settings" }
+]
 
 readme = "README.md"
 
