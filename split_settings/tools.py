@@ -27,9 +27,10 @@ def optional(filename: str) -> str:
     Now `invalid-name` is removed from `pylint`.
 
     Args:
-        filename: the filename to be optional
+        filename: the filename to be optional.
 
-    Returns: new instance of :class:`_Optional`
+    Returns:
+        New instance of :class:`_Optional`.
 
     """
     return _Optional(filename)
@@ -43,7 +44,7 @@ class _Optional(str):  # noqa: WPS600
     """
 
 
-def include(*args: str, **kwargs) -> None:  # noqa: WPS210, C901
+def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     """
     Used for including Django project settings from multiple files.
 
@@ -62,8 +63,8 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, C901
         )
 
     Args:
-        args: File paths (``glob`` - compatible wildcards can be used).
-        kwargs: Settings context, may contain ``scope=globals()`` or be empty.
+        *args: File paths (``glob`` - compatible wildcards can be used).
+        **kwargs: Settings context: ``scope=globals()`` or ``None``.
 
     Raises:
         IOError: if a required settings file is not found.
