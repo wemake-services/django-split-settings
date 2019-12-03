@@ -25,7 +25,12 @@ Also, check this [example project](https://github.com/wemake-services/wemake-dja
 
 ## Requirements
 
-While this package will most likely work with the most versions of `django`, we do not officially support any versions except the latest release and the current LTS version, which are `1.11` and `2.2` right now.
+While this package will most likely work with the most versions of `django`, we [officially support](https://github.com/sobolevn/django-split-settings/blob/master/.travis.yml):
+
+- 1.11
+- 2.1
+- 2.2
+- 3.0
 
 This package has no dependencies itself.
 
