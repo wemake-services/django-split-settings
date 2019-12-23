@@ -63,7 +63,7 @@ safety = "^1.8"
 
 pytest = "^5.3"
 pytest-cov = "^2.8"
-pytest-randomly = "^3.0"
+pytest-randomly = "^3.2"
 
 sphinx = "^2.3"
 sphinx-autodoc-typehints = "^1.10"
