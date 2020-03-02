@@ -68,7 +68,7 @@ pytest-randomly = "^3.2"
 sphinx = "^2.4"
 sphinx-autodoc-typehints = "^1.10"
 doc8 = "^0.8.0"
-tomlkit = "^0.5.8"
+tomlkit = "^0.5.11"
 m2r = "^0.2"
 
 
