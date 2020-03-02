@@ -427,7 +427,7 @@ description = "A flake8 plugin checking common style issues or inconsistencies w
 name = "flake8-pytest-style"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "0.1.3"
+version = "0.2.0"
 
 [package.dependencies]
 flake8-plugin-utils = ">=1.0,<2.0"
@@ -1169,7 +1169,7 @@ version = "0.6.0"
 more-itertools = "*"
 
 [metadata]
-content-hash = "cfd406412f82d74a3222e116540b90dce70f95f87112bcd5e34d02817712a02b"
+content-hash = "e67f26f4bba1049606555da29d41fc4caeb408950d7c956b4a6b253d9c1629b5"
 python-versions = "^3.6"
 
 [metadata.hashes]
@@ -1213,7 +1213,7 @@ flake8-plugin-utils = ["1ac5eb19773d5c7fdde60b0d901ae86be9c751bf697c61fdb6609b86
 flake8-polyfill = ["12be6a34ee3ab795b19ca73505e7b55826d5f6ad7230d31b18e106400169b9e9", "e44b087597f6da52ec6393a709e7108b2905317d0c0b744cdca6208e670d8eda"]
 flake8-print = ["324f9e59a522518daa2461bacd7f82da3c34eb26a4314c2a54bd493f8b394a68"]
 flake8-pytest = ["61686128a79e1513db575b2bcac351081d5a293811ddce2d5dfc25e8c762d33e", "b4d6703f7d7b646af1e2660809e795886dd349df11843613dbe6515efa82c0f3"]
-flake8-pytest-style = ["1c2303998c509cd65c3fb047cd536787ddf953e8113bc7f086c0cd7468db4b1f", "820503cb50b7f6aa13a9889f4c47ba35bbd666877a72ed138ae5682a9bccaf9d"]
+flake8-pytest-style = ["79537f9e4bfa2ad4a3b7528a30215c396c6cf179ae68610ffcd2de50763198c5", "f0a0ab6f4ff121ebd402049a93d04fb9ea149476bcd2867879f0f5b391cb7c26"]
 flake8-quotes = ["11a15d30c92ca5f04c2791bd7019cf62b6f9d3053eb050d02a135557eb118bfc"]
 flake8-rst-docstrings = ["01d38327801781b26c3dfeb71ae37e5a02c5ca1b774a686f63feab8824ca6f9c"]
 flake8-string-format = ["68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2", "774d56103d9242ed968897455ef49b7d6de272000cfa83de5814273a868832f1"]
