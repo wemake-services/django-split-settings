@@ -55,7 +55,7 @@ django = "^2.2"
 
 mypy = "^0.761"
 wemake-python-styleguide = "^0.13.4"
-flake8-pytest-style = "^0.2.0"
+flake8-pytest-style = "^1.0.0"
 nitpick = "^0.22.1"
 
 safety = "^1.8"
