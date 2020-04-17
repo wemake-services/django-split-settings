@@ -4,7 +4,7 @@
 
 import os
 
-from pytest import fixture
+import pytest
 
 
 class Scope(dict):  # noqa: WPS600
@@ -18,13 +18,13 @@ class Scope(dict):  # noqa: WPS600
 
 # Different util functions:
 
-@fixture
+@pytest.fixture()
 def scope():
     """This fixture just returns the new instance of the test Scope class."""
     return Scope()
 
 
-@fixture
+@pytest.fixture()
 def fixture_file():
     """This fixture return a path to the test fixture file."""
     return os.path.join(
@@ -36,21 +36,21 @@ def fixture_file():
 
 # Settings files:
 
-@fixture
+@pytest.fixture()
 def merged():
     """This fixture returns basic merged settings example."""
     from tests.settings import merged as _merged  # noqa: WPS433
     return _merged
 
 
-@fixture
+@pytest.fixture()
 def stacked():
     """This fixture returns stacked settings example."""
     from tests.settings import stacked as _stacked  # noqa: WPS433
     return _stacked
 
 
-@fixture
+@pytest.fixture()
 def recursion():
     """This fixture returns recursion settings example."""
     from tests.settings import recursion as _recursion  # noqa: WPS433
