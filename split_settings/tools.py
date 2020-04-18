@@ -11,7 +11,7 @@ import glob
 import inspect
 import os
 import sys
-import types
+from importlib.util import module_from_spec, spec_from_file_location
 
 __all__ = ('optional', 'include')  # noqa: WPS410
 
@@ -114,8 +114,10 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
                 rel_path[:rel_path.rfind('.')].replace('/', '.'),
             )
 
-            module = types.ModuleType(str(module_name))
-            module.__file__ = included_file  # noqa: WPS609
+            spec = spec_from_file_location(
+                module_name, included_file,
+            )
+            module = module_from_spec(spec)
             sys.modules[module_name] = module
         if saved_included_file:
             scope[_INCLUDED_FILE] = saved_included_file
