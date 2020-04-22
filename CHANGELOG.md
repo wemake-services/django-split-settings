@@ -3,6 +3,13 @@
 We follow Semantic Version.
 
 
+## 1.0.1
+
+### Bugfixes
+
+- Fixes that django's dev server was not catching split setting filechanges
+
+
 ## 1.0.0
 
 Breaking changes:

@@ -4,7 +4,7 @@ style = "https://raw.githubusercontent.com/wemake-services/wemake-python-stylegu
 
 [tool.poetry]
 name = "django-split-settings"
-version = "1.0.0"
+version = "1.0.1"
 description = "Organize Django settings into multiple files and directories. Easily override and modify settings. Use wildcards and optional settings files."
 authors = [
   "sobolevn <mail@sobolevn.me>",
