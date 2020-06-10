@@ -7,6 +7,14 @@ def test_merge(merged):
     assert merged.STATIC_ROOT
 
 
+def test_alt_ext(alt_ext):
+    """Test that all values from settings are present."""
+    assert alt_ext.NO_EXT_INCLUDED
+    assert alt_ext.DOT_CONF_INCLUDED
+    assert alt_ext.DOUBLE_EXT_INCLUDED
+    assert alt_ext.OPTIONAl_INCLUDED
+
+
 def test_override(merged, monkeypatch):
     """This setting must be overridden in the testing.py."""
     monkeypatch.setenv('DJANGO_SETTINGS_MODULE', 'tests.settings.merged')
