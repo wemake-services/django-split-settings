@@ -6,5 +6,5 @@ from split_settings.tools import include, optional
 include(
     'include',
     '*.conf',
-    optional('optional.ext')
+    optional('optional.ext'),
 )

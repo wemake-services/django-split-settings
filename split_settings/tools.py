@@ -11,9 +11,8 @@ import glob
 import inspect
 import os
 import sys
-from importlib.util import module_from_spec, spec_from_loader
 from importlib.machinery import SourceFileLoader
-
+from importlib.util import module_from_spec, spec_from_loader
 
 __all__ = ('optional', 'include')  # noqa: WPS410
 
@@ -118,7 +117,10 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
 
             spec = spec_from_loader(
                 module_name,
-                SourceFileLoader(os.path.basename(included_file).split('.')[0], included_file),
+                SourceFileLoader(
+                    os.path.basename(included_file).split('.')[0],
+                    included_file,
+                ),
             )
             module = module_from_spec(spec)
             sys.modules[module_name] = module

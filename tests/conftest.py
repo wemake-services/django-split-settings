@@ -7,7 +7,7 @@ import os
 import pytest
 
 
-class Scope(dict):  # noqa: WPS600
+class Scope(dict):  # noqa: WPS600, WPS202
     """This class emulates `globals()`, but does not share state in tests."""
 
     def __init__(self, *args, **kwargs):

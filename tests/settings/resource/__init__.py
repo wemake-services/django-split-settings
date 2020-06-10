@@ -5,9 +5,9 @@ from tests.settings import resource
 
 include(
     # Components:
-    ('tests.settings.alt_ext', 'base.conf'),
-    ('tests.settings.alt_ext', 'locale.conf'),
-    ('tests.settings.alt_ext', 'apps_middleware'),
+    ('tests.settings.resource', 'base.conf'),
+    ('tests.settings.resource', 'locale.conf'),
+    ('tests.settings.resource', 'apps_middleware'),
     (resource, 'static.settings'),
     (resource, 'templates.py'),
     optional((resource, 'database.conf')),
@@ -15,7 +15,7 @@ include(
 
     # Missing file:
     optional((resource, 'missing_file.py')),
-    optional(('tests.settings.alt_ext', 'missing_file.py')),
+    optional(('tests.settings.alt_ext', 'missing_file.conf')),
 
     # Scope:
     scope=globals(),  # noqa: WPS421
