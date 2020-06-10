@@ -12,7 +12,7 @@ def test_alt_ext(alt_ext):
     assert alt_ext.NO_EXT_INCLUDED
     assert alt_ext.DOT_CONF_INCLUDED
     assert alt_ext.DOUBLE_EXT_INCLUDED
-    assert alt_ext.OPTIONAl_INCLUDED
+    assert alt_ext.OPTIONAL_INCLUDED
 
 
 def test_override(merged, monkeypatch):
