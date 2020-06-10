@@ -15,6 +15,18 @@ def test_alt_ext(alt_ext):
     assert alt_ext.OPTIONAL_INCLUDED
 
 
+def test_resource(resource):
+    """Test that all values from settings are present."""
+    assert resource.APPS_MIDDLEWARE_INCLUDED
+    assert resource.BASE_INCLUDED
+    assert resource.DATABASE_INCLUDED
+    assert resource.LOCALE_INCLUDED
+    assert resource.LOGGING_INCLUDED
+    assert resource.STATIC_SETTINGS_INCLUDED
+    assert resource.TEMPLATES_INCLUDED
+    assert not resource.OVERRIDDEN
+
+
 def test_override(merged, monkeypatch):
     """This setting must be overridden in the testing.py."""
     monkeypatch.setenv('DJANGO_SETTINGS_MODULE', 'tests.settings.merged')

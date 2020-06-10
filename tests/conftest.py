@@ -42,11 +42,20 @@ def merged():
     from tests.settings import merged as _merged  # noqa: WPS433
     return _merged
 
+
 @pytest.fixture()
 def alt_ext():
-    """This fixture returns basic merged settings example."""
+    """This fixture returns alt_ext settings example."""
     from tests.settings import alt_ext as _alt_ext  # noqa: WPS433
     return _alt_ext
+
+
+@pytest.fixture()
+def resource():
+    """This fixture returns resource settings example."""
+    from tests.settings import resource as _resource  # noqa: WPS433
+    return _resource
+
 
 @pytest.fixture()
 def stacked():
