@@ -51,10 +51,10 @@ def alt_ext():
 
 
 @pytest.fixture()
-def resource():
+def resources():
     """This fixture returns resource settings example."""
-    from tests.settings import resource as _resource  # noqa: WPS433
-    return _resource
+    from tests.settings import resources as _resources  # noqa: WPS433
+    return _resources
 
 
 @pytest.fixture()

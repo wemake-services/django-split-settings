@@ -11,10 +11,19 @@ import glob
 import inspect
 import os
 import sys
+import types
+from importlib import import_module
 from importlib.machinery import SourceFileLoader
 from importlib.util import module_from_spec, spec_from_loader
+from typing import Union
 
-__all__ = ('optional', 'include')  # noqa: WPS410
+try:
+    from importlib import resources as pkg_resources  # noqa: WPS433
+except ImportError:
+    # Use backport to PY<3.7 `importlib_resources`.
+    import importlib_resources as pkg_resources  # type: ignore # noqa: WPS433, WPS440, E501
+
+__all__ = ('optional', 'include', 'resource')  # noqa: WPS410
 
 #: Special magic attribute that is sometimes set by `uwsgi` / `gunicord`.
 _INCLUDED_FILE = '__included_file__'
@@ -45,6 +54,61 @@ class _Optional(str):  # noqa: WPS600
     """
 
 
+def resource(package: Union[str, types.ModuleType], filename: str) -> str:
+    """
+    Include a packaged resource as a settings file.
+
+    Args:
+        package: the package as either an imported module, or a string
+        filename: the filename of the resource to include.
+
+    Returns:
+        New instance of :class:`_Resource`.
+
+    """
+    return _Resource(package, filename)
+
+
+class _Resource(str):  # noqa: WPS600
+    """
+    Wrap an included package resource as a str.
+
+    Resource includes may also be wrapped as Optional and record if the
+    package was found or not.
+    """
+
+    module_not_found = False
+
+    def __new__(
+        cls,
+        package: Union[str, types.ModuleType],
+        filename: str,
+    ) -> '_Resource':
+
+        # the type ignores workaround a known mypy bug
+        # https://github.com/python/mypy/issues/1021
+
+        if isinstance(package, str):
+            try:
+                package = import_module(package)
+            except ModuleNotFoundError:
+                rsrc = super().__new__(cls, package)  # type: ignore
+                rsrc.module_not_found = True
+                return rsrc
+        try:
+            with pkg_resources.path(package, filename) as pth:
+                return super().__new__(cls, str(pth))  # type: ignore
+        except FileNotFoundError:
+            # even if it doesnt exist - return what the path would be
+            return super().__new__(  # type: ignore
+                cls,
+                os.path.join(
+                    os.path.dirname(package.__file__),  # noqa: WPS609
+                    filename,
+                ),
+            )
+
+
 def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     """
     Used for including Django project settings from multiple files.
@@ -53,11 +117,13 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
 
     .. code:: python
 
-        from split_settings.tools import optional, include
+        from split_settings.tools import optional, include, resource
+        from . import components
 
         include(
             'components/base.py',
             'components/database.py',
+            resource(components, settings.conf),  # package resource
             optional('local_settings.py'),
 
             scope=globals(),  # optional scope
@@ -69,6 +135,7 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
 
     Raises:
         IOError: if a required settings file is not found.
+        ModuleNotFoundError: if a required resource package is not found.
 
     """
     # we are getting globals() from previous frame
@@ -87,6 +154,14 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     for conf_file in args:
         saved_included_file = scope.get(_INCLUDED_FILE)
         pattern = os.path.join(conf_path, conf_file)
+
+        # check if this include is a resource with an unfound module
+        # before we glob it - avoid the small chance there is a file
+        # with the same name as the package in cwd
+        if isinstance(conf_file, _Resource) and conf_file.module_not_found:
+            raise ModuleNotFoundError(
+                'No module named {0}'.format(conf_file),
+            )
 
         # find files per pattern, raise an error if not found
         # (unless file is optional)

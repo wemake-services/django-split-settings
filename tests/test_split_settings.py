@@ -15,16 +15,18 @@ def test_alt_ext(alt_ext):
     assert alt_ext.OPTIONAL_INCLUDED
 
 
-def test_resource(resource):  # noqa: WPS218
+def test_resources(resources):  # noqa: WPS218
     """Test that all values from settings are present."""
-    assert resource.APPS_MIDDLEWARE_INCLUDED
-    assert resource.BASE_INCLUDED
-    assert resource.DATABASE_INCLUDED
-    assert resource.LOCALE_INCLUDED
-    assert resource.LOGGING_INCLUDED
-    assert resource.STATIC_SETTINGS_INCLUDED
-    assert resource.TEMPLATES_INCLUDED
-    assert resource.OVERRIDE_WORKS
+    assert resources.APPS_MIDDLEWARE_INCLUDED
+    assert resources.BASE_INCLUDED
+    assert resources.DATABASE_INCLUDED
+    assert resources.LOCALE_INCLUDED
+    assert resources.LOGGING_INCLUDED
+    assert resources.STATIC_SETTINGS_INCLUDED
+    assert resources.TEMPLATES_INCLUDED
+    assert resources.OVERRIDE_WORKS
+    assert resources.UNFOUND_RESOURCE_IS_IOERROR
+    assert resources.UNFOUND_PACKAGE_IS_MODULE_ERROR
 
 
 def test_override(merged, monkeypatch):
