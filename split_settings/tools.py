@@ -7,26 +7,37 @@ Easily override and modify settings. Use wildcards and optional
 settings files.
 """
 
+import contextlib
 import glob
 import inspect
 import os
 import sys
 import types
-from importlib import import_module
 from importlib.machinery import SourceFileLoader
 from importlib.util import module_from_spec, spec_from_loader
-from typing import Union
+from typing import List, Union
 
 try:
-    from importlib import resources as pkg_resources  # noqa: WPS433
+    from importlib.resources import (  # type: ignore # noqa: WPS433
+        files,
+        as_file,
+    )
 except ImportError:
-    # Use backport to PY<3.7 `importlib_resources`.
-    import importlib_resources as pkg_resources  # type: ignore # noqa: WPS433, WPS440, E501
+    # Use backport to PY<3.9 `importlib_resources`.
+    # importlib_resources is included in python stdlib starting at 3.7 but
+    # the files function is not available until python 3.9
+    from importlib_resources import files, as_file  # noqa: WPS433, WPS440
 
 __all__ = ('optional', 'include', 'resource')  # noqa: WPS410
 
 #: Special magic attribute that is sometimes set by `uwsgi` / `gunicord`.
 _INCLUDED_FILE = '__included_file__'
+
+# If resources are located in archives, importlib will create temporary
+# files to access them contained within contexts, we track the contexts
+# here as opposed to the _Resource.__del__ method because invocation of
+# that method is non-deterministic
+__resource_file_contexts__: List[contextlib.ExitStack] = []
 
 
 def optional(filename: str) -> str:
@@ -78,6 +89,8 @@ class _Resource(str):  # noqa: WPS600
     """
 
     module_not_found = False
+    package: str
+    filename: str
 
     def __new__(
         cls,
@@ -85,28 +98,33 @@ class _Resource(str):  # noqa: WPS600
         filename: str,
     ) -> '_Resource':
 
-        # the type ignores workaround a known mypy bug
+        # the type ignores workaround a known mypy issue
         # https://github.com/python/mypy/issues/1021
-
-        if isinstance(package, str):
-            try:
-                package = import_module(package)
-            except ModuleNotFoundError:
-                rsrc = super().__new__(cls, package)  # type: ignore
-                rsrc.module_not_found = True
-                return rsrc
         try:
-            with pkg_resources.path(package, filename) as pth:
-                return super().__new__(cls, str(pth))  # type: ignore
-        except FileNotFoundError:
-            # even if it doesnt exist - return what the path would be
-            return super().__new__(  # type: ignore
-                cls,
-                os.path.join(
-                    os.path.dirname(package.__file__),  # noqa: WPS609
-                    filename,
-                ),
-            )
+            ref = files(package) / filename
+        except ModuleNotFoundError:
+            rsrc = super().__new__(cls, '')  # type: ignore
+            rsrc.module_not_found = True
+            return rsrc
+
+        file_manager = contextlib.ExitStack()
+        __resource_file_contexts__.append(file_manager)
+        return super().__new__(  # type: ignore
+            cls,
+            file_manager.enter_context(as_file(ref)),
+        )
+
+    def __init__(
+        self,
+        package: Union[str, types.ModuleType],
+        filename: str,
+    ) -> None:
+        super().__init__()
+        if isinstance(package, types.ModuleType):
+            self.package = package.__name__
+        else:
+            self.package = package
+        self.filename = filename
 
 
 def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
@@ -153,15 +171,18 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
 
     for conf_file in args:
         saved_included_file = scope.get(_INCLUDED_FILE)
-        pattern = os.path.join(conf_path, conf_file)
+        pattern = conf_file
+        # if a resource was not found the path will resolve to empty str here
+        if pattern:
+            pattern = os.path.join(conf_path, conf_file)
 
         # check if this include is a resource with an unfound module
-        # before we glob it - avoid the small chance there is a file
-        # with the same name as the package in cwd
-        if isinstance(conf_file, _Resource) and conf_file.module_not_found:
-            raise ModuleNotFoundError(
-                'No module named {0}'.format(conf_file),
-            )
+        # and issue a more specific exception
+        if isinstance(conf_file, _Resource):
+            if conf_file.module_not_found:
+                raise ModuleNotFoundError(
+                    'No module named {0}'.format(conf_file.package),
+                )
 
         # find files per pattern, raise an error if not found
         # (unless file is optional)
@@ -203,3 +224,8 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
             scope[_INCLUDED_FILE] = saved_included_file
         elif _INCLUDED_FILE in scope:
             scope.pop(_INCLUDED_FILE)
+
+    # close the contexts of any temporary files created to access
+    # resource contents thereby deleting them
+    for ctx in __resource_file_contexts__:
+        ctx.close()

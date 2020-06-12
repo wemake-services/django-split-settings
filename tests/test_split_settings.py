@@ -25,8 +25,16 @@ def test_resources(resources):  # noqa: WPS218
     assert resources.STATIC_SETTINGS_INCLUDED
     assert resources.TEMPLATES_INCLUDED
     assert resources.OVERRIDE_WORKS
+    assert resources.MULTIPLE_SUBDIR_FILE_INCLUDED
     assert resources.UNFOUND_RESOURCE_IS_IOERROR
     assert resources.UNFOUND_PACKAGE_IS_MODULE_ERROR
+    assert resources.UNFOUND_RESOURCE_ERR_STR.startswith(
+        'No such file',
+    )
+    assert resources.UNFOUND_RESOURCE_ERR_STR.endswith(
+        'does_not_exist.conf',
+    )
+    assert resources.UNFOUND_PACKAGE_ERR_STR == 'No module named does.not.exist'
 
 
 def test_override(merged, monkeypatch):

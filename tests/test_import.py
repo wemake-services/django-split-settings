@@ -7,6 +7,7 @@ def test_wildcard_import():
     """Imports all from all modules."""
     assert 'optional' in __all__
     assert 'include' in __all__
+    assert 'resource' in __all__
 
 
 def test_class_import(merged):
