@@ -136,7 +136,7 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     .. code:: python
 
         from split_settings.tools import optional, include, resource
-        from . import components
+        import components
 
         include(
             'components/base.py',
