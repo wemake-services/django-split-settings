@@ -72,6 +72,21 @@ previous files.
 
 We also made a in-depth [tutorial](https://sobolevn.me/2017/04/managing-djangos-settings).
 
+## Package Resources
+
+You may also include package resources and use alternate extensions:
+```python
+from mypackge import settings
+include(resource(settings, 'base.conf'))
+include(optional(resource(settings, 'local.conf')))
+```
+Resources may be also be included by passing the module as a string:
+
+```python
+include(resource('mypackage.settings', 'base.conf'))
+```
+Note that resources included from archived packages (i.e. zip files), will have a temporary
+file created, which will be deleted after the settings file has been compiled.
 
 ## Tips and tricks
 

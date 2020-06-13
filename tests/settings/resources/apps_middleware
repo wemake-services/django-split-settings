@@ -1,0 +1,3 @@
+# -*- coding: utf-8 -*-
+
+APPS_MIDDLEWARE_INCLUDED = True

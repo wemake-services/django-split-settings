@@ -46,6 +46,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
+importlib-resources = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 django = "^2.2"

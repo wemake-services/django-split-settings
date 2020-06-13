@@ -7,7 +7,7 @@ import os
 import pytest
 
 
-class Scope(dict):  # noqa: WPS600
+class Scope(dict):  # noqa: WPS600, WPS202
     """This class emulates `globals()`, but does not share state in tests."""
 
     def __init__(self, *args, **kwargs):
@@ -41,6 +41,20 @@ def merged():
     """This fixture returns basic merged settings example."""
     from tests.settings import merged as _merged  # noqa: WPS433
     return _merged
+
+
+@pytest.fixture()
+def alt_ext():
+    """This fixture returns alt_ext settings example."""
+    from tests.settings import alt_ext as _alt_ext  # noqa: WPS433
+    return _alt_ext
+
+
+@pytest.fixture()
+def resources():
+    """This fixture returns resource settings example."""
+    from tests.settings import resources as _resources  # noqa: WPS433
+    return _resources
 
 
 @pytest.fixture()

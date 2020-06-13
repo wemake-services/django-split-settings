@@ -2,6 +2,12 @@
 
 We follow Semantic Version.
 
+## 1.1.0
+
+Improvements:
+
+- Packaged resources may now be included
+- Alternate file extensions are allowed
 
 ## 1.0.1
 
