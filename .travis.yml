@@ -27,7 +27,9 @@ script:
   - poetry run doc8 -q docs
   - poetry check
   - poetry run pip check
-  - poetry run safety check --bare --full-report
+  # Ignoring sphinx@2 security issue for now, see:
+  # https://github.com/miyakogi/m2r/issues/51
+  - poetry run safety check --full-report -i 38330
 
 after_success:
   - pip install coveralls
