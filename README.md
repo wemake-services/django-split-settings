@@ -98,6 +98,7 @@ INSTALLED_APPS += (
 
 
 ## Do you want to contribute?
+see this 
 
 Read the [CONTRIBUTING.md](https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.md) file.
 
