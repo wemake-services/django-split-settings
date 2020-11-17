@@ -3,6 +3,18 @@
 We follow Semantic Version.
 
 
+## 1.1.0
+
+### Features
+
+- Adds `python3.9` support
+- Adds `django3.1` support
+
+### Misc
+
+- Moves to Github Actions
+
+
 ## 1.0.1
 
 ### Bugfixes

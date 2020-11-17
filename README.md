@@ -35,7 +35,7 @@ While this package will most likely work with the most versions of `django`, we 
 This package has no dependencies itself.
 
 In case you need older `python` / `django` versions support,
-then consider using older versions.
+then consider using older versions of `django-split-settings`.
 
 
 ## Installation
@@ -71,7 +71,7 @@ in that order from the subdirectory called `components/`.
 following file can access and modify the settings declared in the
 previous files.
 
-We also made a in-depth [tutorial](https://sobolevn.me/2017/04/managing-djangos-settings).
+We also made an in-depth [tutorial](https://sobolevn.me/2017/04/managing-djangos-settings).
 
 
 ## Tips and tricks
