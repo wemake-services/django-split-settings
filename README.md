@@ -6,7 +6,7 @@
 ---
 
 [![wemake.services](https://img.shields.io/badge/%20-wemake.services-green.svg?label=%20&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAbUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP%2F%2F%2F5TvxDIAAAAIdFJOUwAjRA8xXANAL%2Bv0SAAAADNJREFUGNNjYCAIOJjRBdBFWMkVQeGzcHAwksJnAPPZGOGAASzPzAEHEGVsLExQwE7YswCb7AFZSF3bbAAAAABJRU5ErkJggg%3D%3D)](https://wemake.services)
-[![test](https://github.com/sobolevn/django-split-settings/workflows/test/badge.svg)](https://github.com/sobolevn/django-split-settings/actions?query=workflow%3Atest)
+[![test](https://github.com/sobolevn/django-split-settings/workflows/test/badge.svg?branch=master&event=push)](https://github.com/sobolevn/django-split-settings/actions?query=workflow%3Atest)
 [![codecov](https://codecov.io/gh/sobolevn/django-split-settings/branch/master/graph/badge.svg)](https://codecov.io/gh/sobolevn/django-split-settings)
 [![Docs](https://readthedocs.org/projects/django-split-settings/badge/?version=latest)](http://django-split-settings.readthedocs.io/en/latest/?badge=latest)
 [![Python Version](https://img.shields.io/pypi/pyversions/django-split-settings.svg)](https://pypi.org/project/django-split-settings/)
