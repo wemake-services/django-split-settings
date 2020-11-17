@@ -1,0 +1,56 @@
+name: test
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+        django-version:
+          - 'Django~=1.11.0'
+          - 'Django~=2.2.0'
+          - 'Django~=3.0.0'
+          - 'Django~=3.1.0'
+        continue-on-error: [false]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install poetry
+      run: |
+        curl -sSL \
+          "https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py" | python -
+
+        echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
+
+    - name: Set up cache
+      uses: actions/cache@v1
+      with:
+        path: .venv
+        key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
+    - name: Install dependencies
+      run: |
+        poetry config virtualenvs.in-project true
+        poetry install
+        poetry run pip install -U "${{ matrix.django-version }}"
+
+    - name: Run tests
+      run: |
+        poetry run flake8 .
+        poetry run mypy split_settings
+        poetry run pytest
+        poetry run doc8 -q docs
+        poetry check
+        poetry run pip check
+        poetry run safety check --full-report
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.xml
