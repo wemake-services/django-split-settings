@@ -30,12 +30,12 @@ def _get_project_meta():
 
 
 pkg_meta = _get_project_meta()
-project = pkg_meta['name']
+project = str(pkg_meta['name'])
 copyright = '2013, 2General Oy'  # noqa: WPS125
 author = 'Nikita Sobolev'
 
 # The short X.Y version
-version = pkg_meta['version']
+version = str(pkg_meta['version'])
 # The full version, including alpha/beta/rc tags
 release = version
 
@@ -43,7 +43,7 @@ release = version
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '2.1'
+needs_sphinx = '3.2'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -60,7 +60,7 @@ extensions = [
     'sphinx.ext.napoleon',
 
     # Used to include .md files:
-    'm2r',
+    'm2r2',
 
     # Used to insert typehints into the final docs:
     'sphinx_autodoc_typehints',
