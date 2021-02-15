@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -13,7 +13,6 @@ jobs:
           - 'Django~=2.2.0'
           - 'Django~=3.0.0'
           - 'Django~=3.1.0'
-        continue-on-error: [false]
 
     steps:
     - uses: actions/checkout@v2

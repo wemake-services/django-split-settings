@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 
 def test_merge(merged):
     """Test that all values from settings are present."""

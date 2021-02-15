@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 LOGGING = {  # noqa: WPS407
     'version': 1,
     'disable_existing_loggers': False,

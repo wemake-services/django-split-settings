@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 
 # This settings will override settings in static.py

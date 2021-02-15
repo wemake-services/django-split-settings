@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 MEDIA_ROOT = ''
 
 MEDIA_URL = ''

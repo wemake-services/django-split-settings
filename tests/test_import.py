@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from split_settings.tools import __all__
 
 
