@@ -51,10 +51,10 @@ python = "^3.6"
 [tool.poetry.dev-dependencies]
 django = "^3.2"
 
-mypy = "^0.812"
+mypy = "^0.910"
 wemake-python-styleguide = "^0.15"
-flake8-pytest-style = "^1.5.0"
-nitpick = "^0.26.0"
+flake8-pytest-style = "^1.5"
+nitpick = "^0.26"
 
 safety = "^1.10"
 

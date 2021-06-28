@@ -112,10 +112,8 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
                 rel_path[:rel_path.rfind('.')].replace('/', '.'),
             )
 
-            spec = spec_from_file_location(
-                module_name, included_file,
-            )
-            module = module_from_spec(spec)
+            spec = spec_from_file_location(module_name, included_file)
+            module = module_from_spec(spec)  # type: ignore
             sys.modules[module_name] = module
         if saved_included_file:
             scope[_INCLUDED_FILE] = saved_included_file
