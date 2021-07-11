@@ -25,12 +25,11 @@ Also, check this [example project](https://github.com/wemake-services/wemake-dja
 
 ## Requirements
 
-While this package will most likely work with the most versions of `django`, we [officially support](https://github.com/sobolevn/django-split-settings/blob/master/.travis.yml):
+While this package will most likely work with the most versions of `django`, we [officially support](https://github.com/sobolevn/django-split-settings/blob/master/.github/workflows/test.yml):
 
-- 1.11
 - 2.2
-- 3.0
 - 3.1
+- 3.2
 
 This package has no dependencies itself.
 
