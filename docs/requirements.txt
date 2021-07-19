@@ -4,6 +4,6 @@
 sphinx==4.1.1
 sphinx_autodoc_typehints==1.12.0
 recommonmark==0.7.1
-m2r2==0.3.0
+m2r2==0.3.1
 tomlkit==0.7.2
 docutils==0.17.1
