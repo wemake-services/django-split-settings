@@ -66,7 +66,7 @@ sphinx = "<4.2"
 sphinx-autodoc-typehints = "^1.12"
 doc8 = "^0.8"
 tomlkit = "^0.7"
-m2r2 = "^0.2"
+m2r2 = "^0.3"
 
 
 [build-system]
