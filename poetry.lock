@@ -229,18 +229,16 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "doc8"
-version = "0.8.1"
+version = "0.9.0"
 description = "Style checker for Sphinx (or other) RST documentation"
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = ">=3.6"
 
 [package.dependencies]
-chardet = "*"
 docutils = "*"
 Pygments = "*"
 restructuredtext-lint = ">=0.7"
-six = "*"
 stevedore = "*"
 
 [[package]]
@@ -1290,7 +1288,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "6dca98257d380d4653cd0c3790a70995242ab68f8156bee974e4a14b52ac39c6"
+content-hash = "590d543adb5615a5be4bd2c728a48f863021f57fe66f9e82749f8091eec77741"
 
 [metadata.files]
 aiocontextvars = [
@@ -1428,8 +1426,8 @@ django = [
     {file = "Django-3.2.5.tar.gz", hash = "sha256:3da05fea54fdec2315b54a563d5b59f3b4e2b1e69c3a5841dda35019c01855cd"},
 ]
 doc8 = [
-    {file = "doc8-0.8.1-py2.py3-none-any.whl", hash = "sha256:4d58a5c8c56cedd2b2c9d6e3153be5d956cf72f6051128f0f2255c66227df721"},
-    {file = "doc8-0.8.1.tar.gz", hash = "sha256:4d1df12598807cf08ffa9a1d5ef42d229ee0de42519da01b768ff27211082c12"},
+    {file = "doc8-0.9.0-py3-none-any.whl", hash = "sha256:91f6459a4b15c3aee2152e0cf59b7537ce199fe66b4df547dae63cfa92499e86"},
+    {file = "doc8-0.9.0.tar.gz", hash = "sha256:380b660474be40ce88b5f04fa93470449124dbc850a0318f2ef186162bc1360b"},
 ]
 docutils = [
     {file = "docutils-0.17.1-py2.py3-none-any.whl", hash = "sha256:cf316c8370a737a022b72b56874f6602acf974a37a9fba42ec2876387549fc61"},
