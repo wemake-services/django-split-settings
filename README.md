@@ -9,7 +9,7 @@
 [![test](https://github.com/sobolevn/django-split-settings/workflows/test/badge.svg?branch=master&event=push)](https://github.com/sobolevn/django-split-settings/actions?query=workflow%3Atest)
 [![codecov](https://codecov.io/gh/sobolevn/django-split-settings/branch/master/graph/badge.svg)](https://codecov.io/gh/sobolevn/django-split-settings)
 [![Docs](https://readthedocs.org/projects/django-split-settings/badge/?version=latest)](http://django-split-settings.readthedocs.io/en/latest/?badge=latest)
-[![Python Version](https://img.shields.io/pypi/pyversions/django-split-settings.svg)](https://pypi.org/project/django-split-settings/)
+[![Python Version](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-blue)](https://pypi.org/project/django-split-settings/)
 [![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
 
 
