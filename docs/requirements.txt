@@ -1,7 +1,7 @@
 # This file is used to setup env
 # to generate documentation.
 
-sphinx==5.1.1
+sphinx==5.2.1
 sphinx_autodoc_typehints==1.19.2
 m2r2==0.3.3
 tomlkit==0.11.4
