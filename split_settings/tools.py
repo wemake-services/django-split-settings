@@ -46,7 +46,14 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     """
     Used for including Django project settings from multiple files.
 
-    Usage:
+    Args:
+        *args: File paths (``glob`` - compatible wildcards can be used).
+        **kwargs: Settings context: ``scope=globals()`` or ``None``.
+
+    Raises:
+        IOError: if a required settings file is not found.
+
+    Usage example:
 
     .. code:: python
 
@@ -59,13 +66,6 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
 
             scope=globals(),  # optional scope
         )
-
-    Args:
-        *args: File paths (``glob`` - compatible wildcards can be used).
-        **kwargs: Settings context: ``scope=globals()`` or ``None``.
-
-    Raises:
-        IOError: if a required settings file is not found.
 
     """
     # we are getting globals() from previous frame
