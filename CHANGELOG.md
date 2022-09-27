@@ -3,6 +3,15 @@
 We follow Semantic Version.
 
 
+## 1.2.0
+
+### Features
+
+- Adds `python3.10` support
+- Drops `python3.6` support
+- Adds `django4.1` support
+
+
 ## 1.1.0
 
 ### Features

@@ -1,7 +1,6 @@
 import os
 
 import pytest
-import six
 
 from split_settings.tools import include
 
@@ -46,10 +45,7 @@ def test_empty_included_file(scope, fixture_file):
 
 def test_unicode_passed(scope, fixture_file):
     """Tests the `unicode` filename in `python2`."""
-    include(
-        six.text_type(fixture_file),  # unicode on py2, str on py3
-        scope=scope,
-    )
+    include(fixture_file, scope=scope)
     assert _FIXTURE_VALUE in scope
 
 

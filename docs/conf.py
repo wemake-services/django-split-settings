@@ -15,7 +15,7 @@
 import os
 import sys
 
-import tomlkit
+import tomli
 
 sys.path.insert(0, os.path.abspath('..'))
 
@@ -23,10 +23,8 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 def _get_project_meta():
-    with open('../pyproject.toml') as pyproject:
-        file_contents = pyproject.read()
-
-    return tomlkit.parse(file_contents)['tool']['poetry']
+    with open('../pyproject.toml', mode='rb') as pyproject:
+        return tomli.load(pyproject)['tool']['poetry']
 
 
 pkg_meta = _get_project_meta()
@@ -42,8 +40,7 @@ release = version
 
 # -- General configuration ---------------------------------------------------
 
-# If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '3.2'
+needs_sphinx = '3.3'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -55,8 +52,6 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
-
-    # Used to write beautiful docstrings:
     'sphinx.ext.napoleon',
 
     # Used to include .md files:
@@ -68,6 +63,9 @@ extensions = [
 
 autoclass_content = 'class'
 autodoc_member_order = 'bysource'
+
+autodoc_member_order = 'bysource'
+autodoc_default_flags = {}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -85,7 +83,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -97,16 +95,24 @@ pygments_style = 'sphinx'
 
 add_module_names = False
 
-# Set `typing.TYPE_CHECKING` to `True`:
-# https://pypi.org/project/sphinx-autodoc-typehints/
-set_type_checking_flag = False
+autodoc_default_options = {
+    'show-inheritance': True,
+}
 
 
-# -- Options for HTML output ----------------------------------------------
+# -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 html_theme = 'alabaster'
+
+# Theme options are theme-specific and customize the look and feel of a theme
+# further.  For a list of options available for each theme, see the
+# documentation.
+html_theme_options = {
+    'sidebar_collapse': False,
+    'show_powered_by': False,
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -122,9 +128,18 @@ html_sidebars = {
     '**': [
         'about.html',
         'navigation.html',
-        'badges.html',
         'moreinfo.html',
         'github.html',
         'searchbox.html',
     ],
 }
+
+
+# -- Extension configuration -------------------------------------------------
+
+napoleon_numpy_docstring = False
+
+# -- Options for todo extension ----------------------------------------------
+
+# If true, `todo` and `todoList` produce output, else they produce nothing.
+todo_include_todos = True
