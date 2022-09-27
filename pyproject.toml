@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-split-settings"
-version = "1.1.0"
+version = "1.2.0"
 description = "Organize Django settings into multiple files and directories. Easily override and modify settings. Use wildcards and optional settings files."
 authors = [
   "sobolevn <mail@sobolevn.me>",
@@ -34,6 +34,7 @@ classifiers = [
   "Framework :: Django :: 3.1",
   "Framework :: Django :: 3.2",
   "Framework :: Django :: 4.0",
+  "Framework :: Django :: 4.1",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: BSD License",
   "Operating System :: OS Independent",
@@ -42,33 +43,39 @@ classifiers = [
   "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 
+[tool.poetry.urls]
+"Funding" = "https://github.com/sponsors/wemake-services"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.test.dependencies]
 django = "^3.2"
 
-mypy = "^0.971"
-wemake-python-styleguide = "^0.16"
+mypy = "^0.981"
+wemake-python-styleguide = "^0.17"
 flake8-pytest-style = "^1.5"
 nitpick = "^0.29"
 
 safety = "^2.1"
+doc8 = "^0.11"
 
 pytest = "^7.0"
 pytest-cov = "^3.0"
 pytest-randomly = "^3.10"
 
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
 sphinx = "^5.1"
 sphinx-autodoc-typehints = "^1.12"
-doc8 = "^0.11"
 tomlkit = "^0.11"
 m2r2 = "^0.3"
 
 
 [build-system]
-requires = ["poetry>=1.0"]
+requires = ["poetry>=1.2"]
 build-backend = "poetry.masonry.api"
 
 

@@ -17,9 +17,8 @@ jobs:
           - 'Django~=2.2.0'
           - 'Django~=3.2.0'
           - 'Django~=4.0.0'
+          - 'Django~=4.1.0'
         include:
-          - python-version: '3.6'
-            django-version: 'Django~=2.2.0'
           - python-version: '3.7'
             django-version: 'Django~=3.2.0'
 
