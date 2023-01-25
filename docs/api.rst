@@ -1,6 +1,5 @@
-***
 API
-***
+===
 
 .. automodule:: split_settings.tools
   :members:

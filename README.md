@@ -98,9 +98,7 @@ INSTALLED_APPS += (
 ```
 
 
-## Common pitfalls
-
-### `BASE_DIR`
+## Updating `BASE_DIR`
 
 The `django create-project` command will create a variable in your `settings.py` called `BASE_DIR`, which is often used to locate static files, media files, and templates.
 
