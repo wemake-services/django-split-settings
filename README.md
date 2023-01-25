@@ -98,6 +98,29 @@ INSTALLED_APPS += (
 ```
 
 
+## Common pitfalls
+
+### `BASE_DIR`
+
+The `django create-project` command will create a variable in your `settings.py` called `BASE_DIR`, which is often used to locate static files, media files, and templates.
+
+```python
+# Created by django create-project
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles/")
+```
+
+The expression for `BASE_DIR` means: get the path to the current file (`settings.py`), get the parent folder (whatever you named your project), get the parent folder (the root of the project). So `STATIC_ROOT` will then be evaluated to `/staticfiles` (with `/` meaning the root of your project/repo).
+
+With `django-split-settings` `settings` is now a module (instead of a file), so `os.path.dirname(os.path.dirname(os.path.abspath(__file__)))` will evaluate to `/whatever-you-named-your-project` as opposed to `/`.
+
+To fix this `BASE_DIR` needs to be set to the parent folder of `/whatever-you-named-your-project`:
+
+```python
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+```
+
 ## Do you want to contribute?
 
 Read the [CONTRIBUTING.md](https://github.com/sobolevn/django-split-settings/blob/master/CONTRIBUTING.md) file.
