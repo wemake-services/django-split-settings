@@ -53,12 +53,12 @@ wemake-python-styleguide = "^0.17"
 flake8-pytest-style = "^1.5"
 nitpick = "^0.29"
 
-safety = "^2.3"
+safety = "^2.1"
 doc8 = "^0.11"
 
-pytest = "^7.2"
-pytest-cov = "^4.0"
-pytest-randomly = "^3.12"
+pytest = "^7.0"
+pytest-cov = "^3.0"
+pytest-randomly = "^3.10"
 
 [tool.poetry.group.docs]
 optional = true
