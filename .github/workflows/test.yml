@@ -42,7 +42,7 @@ jobs:
     - name: Install dependencies
       run: |
         poetry config virtualenvs.in-project true
-        poetry run pip install --upgrade pip
+        poetry run pip install --upgrade pip setuptools
         poetry install
 
         poetry run pip install --upgrade "${{ matrix.django-version }}"
