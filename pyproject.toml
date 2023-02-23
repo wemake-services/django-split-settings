@@ -77,3 +77,50 @@ build-backend = "poetry.masonry.api"
 
 [tool.nitpick]
 style = "https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/styles/nitpick-style-wemake.toml"
+
+[tool.isort]
+# isort configuration:
+# https://github.com/timothycrosley/isort/wiki/isort-Settings
+profile = "wemake"
+
+[tool.pytest.ini_options]
+# py.test options:
+norecursedirs = ["*.egg", ".eggs", "dist", "build", "docs", ".tox", ".git", "__pycache__"]
+addopts = """
+--strict-markers
+--strict-config
+--cov=split_settings
+--cov-branch
+--cov-report=term-missing:skip-covered
+--cov-report=html
+--cov-report=xml
+--cov-fail-under=100"""
+
+[tool.mypy]
+# The mypy configurations: http://bit.ly/2zEl9WI
+allow_redefinition = false
+check_untyped_defs = true
+disallow_untyped_decorators = true
+disallow_any_explicit = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+ignore_errors = false
+ignore_missing_imports = true
+implicit_reexport = false
+strict_optional = true
+strict_equality = true
+local_partial_types = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unreachable = true
+warn_no_return = true
+
+[tool.doc8]
+ignore-path = "docs/_build"
+max-line-length = "80"
+sphinx = "True"
+
+[tool.setuptools]
+include-package-data = false
