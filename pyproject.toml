@@ -48,7 +48,7 @@ python = "^3.7"
 [tool.poetry.group.test.dependencies]
 django = "^3.2"
 
-mypy = "^0.981"
+mypy = ">=0.981,<1.2"
 wemake-python-styleguide = "^0.17"
 flake8-pytest-style = "^1.5"
 nitpick = "^0.29"
