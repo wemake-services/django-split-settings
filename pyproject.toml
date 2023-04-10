@@ -57,7 +57,7 @@ safety = "^2.1"
 doc8 = "^0.11"
 
 pytest = "^7.0"
-pytest-cov = "^3.0"
+pytest-cov = ">=3,<5"
 pytest-randomly = "^3.10"
 
 [tool.poetry.group.docs]
