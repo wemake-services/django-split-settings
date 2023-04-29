@@ -16,8 +16,8 @@ jobs:
         python-version: ['3.8', '3.9', '3.10']
         django-version:
           - 'Django~=3.2.0'
-          - 'Django~=4.0.0'
           - 'Django~=4.1.0'
+          - 'Django~=4.2.0'
         include:
           - python-version: '3.7'
             django-version: 'Django~=3.2.0'
