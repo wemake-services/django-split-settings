@@ -28,8 +28,8 @@ Also, check this [example project](https://github.com/wemake-services/wemake-dja
 While this package will most likely work with the most versions of `django`, we [officially support](https://github.com/sobolevn/django-split-settings/blob/master/.github/workflows/test.yml):
 
 - 3.2
-- 4.0
 - 4.1
+- 4.2
 
 This package has no dependencies itself.
 
