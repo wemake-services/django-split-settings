@@ -19,10 +19,8 @@ jobs:
           - 'Django~=4.1.0'
           - 'Django~=4.2.0'
         include:
-          - python-version: '3.7'
-            django-version: 'Django~=3.2.0'
           - python-version: '3.11'
-            django-version: 'Django~=4.1.3'
+            django-version: 'Django~=4.2.0'
 
     steps:
     - uses: actions/checkout@v3
@@ -33,15 +31,13 @@ jobs:
 
     - name: Install poetry
       run: |
-        curl -sSL \
-          "https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py" | python
+        curl -sSL "https://install.python-poetry.org" | python
 
         # Adding `poetry` to `$PATH`:
         echo "$HOME/.poetry/bin" >> $GITHUB_PATH
 
     - name: Install dependencies
       run: |
-        poetry config virtualenvs.in-project true
         poetry run pip install --upgrade pip setuptools
         poetry install
 
