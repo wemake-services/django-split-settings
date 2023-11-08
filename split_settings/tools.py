@@ -9,17 +9,18 @@ import glob
 import inspect
 import os
 import sys
+import typing
 from importlib.util import module_from_spec, spec_from_file_location
 
 __all__ = ('optional', 'include')  # noqa: WPS410
 
-#: Special magic attribute that is sometimes set by `uwsgi` / `gunicord`.
+#: Special magic attribute that is sometimes set by `uwsgi` / `gunicorn`.
 _INCLUDED_FILE = '__included_file__'
 
 
-def optional(filename: str) -> str:
+def optional(filename: typing.Optional[str]) -> typing.Optional[str]:
     """
-    This functions is used for compatibility reasons.
+    This function is used for compatibility reasons.
 
     It masks the old `optional` class with the name error.
     Now `invalid-name` is removed from `pylint`.
@@ -42,7 +43,9 @@ class _Optional(str):  # noqa: WPS600
     """
 
 
-def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
+def include(  # noqa: WPS210, WPS231, C901
+    *args: typing.Optional[str], **kwargs,
+) -> None:
     """
     Used for including Django project settings from multiple files.
 
@@ -83,7 +86,7 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
 
     for conf_file in args:
         saved_included_file = scope.get(_INCLUDED_FILE)
-        pattern = os.path.join(conf_path, conf_file)
+        pattern = os.path.join(conf_path, conf_file or '')
 
         # find files per pattern, raise an error if not found
         # (unless file is optional)
