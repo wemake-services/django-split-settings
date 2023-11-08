@@ -18,7 +18,7 @@ __all__ = ('optional', 'include')  # noqa: WPS410
 _INCLUDED_FILE = '__included_file__'
 
 
-def optional(filename: typing.Optional[str]) -> typing.Optional[str]:
+def optional(filename: typing.Union[str, None]) -> str:
     """
     This function is used for compatibility reasons.
 
@@ -32,7 +32,7 @@ def optional(filename: typing.Optional[str]) -> typing.Optional[str]:
         New instance of :class:`_Optional`.
 
     """
-    return _Optional(filename)
+    return _Optional(filename or '')
 
 
 class _Optional(str):  # noqa: WPS600
@@ -43,9 +43,7 @@ class _Optional(str):  # noqa: WPS600
     """
 
 
-def include(  # noqa: WPS210, WPS231, C901
-    *args: typing.Optional[str], **kwargs,
-) -> None:
+def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     """
     Used for including Django project settings from multiple files.
 
@@ -86,7 +84,7 @@ def include(  # noqa: WPS210, WPS231, C901
 
     for conf_file in args:
         saved_included_file = scope.get(_INCLUDED_FILE)
-        pattern = os.path.join(conf_path, conf_file or '')
+        pattern = os.path.join(conf_path, conf_file)
 
         # find files per pattern, raise an error if not found
         # (unless file is optional)
