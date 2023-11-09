@@ -9,17 +9,18 @@ import glob
 import inspect
 import os
 import sys
+import typing
 from importlib.util import module_from_spec, spec_from_file_location
 
 __all__ = ('optional', 'include')  # noqa: WPS410
 
-#: Special magic attribute that is sometimes set by `uwsgi` / `gunicord`.
+#: Special magic attribute that is sometimes set by `uwsgi` / `gunicorn`.
 _INCLUDED_FILE = '__included_file__'
 
 
-def optional(filename: str) -> str:
+def optional(filename: typing.Optional[str]) -> str:
     """
-    This functions is used for compatibility reasons.
+    This function is used for compatibility reasons.
 
     It masks the old `optional` class with the name error.
     Now `invalid-name` is removed from `pylint`.
@@ -31,7 +32,7 @@ def optional(filename: str) -> str:
         New instance of :class:`_Optional`.
 
     """
-    return _Optional(filename)
+    return _Optional(filename or '')
 
 
 class _Optional(str):  # noqa: WPS600
