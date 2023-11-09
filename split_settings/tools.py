@@ -18,7 +18,7 @@ __all__ = ('optional', 'include')  # noqa: WPS410
 _INCLUDED_FILE = '__included_file__'
 
 
-def optional(filename: typing.Union[str, None]) -> str:
+def optional(filename: typing.Optional[str]) -> str:
     """
     This function is used for compatibility reasons.
 
