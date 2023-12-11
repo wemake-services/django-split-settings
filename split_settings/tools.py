@@ -83,6 +83,10 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     conf_path = os.path.dirname(including_file)
 
     for conf_file in args:
+        # skip optional empty values
+        if not conf_file and isinstance(conf_file, _Optional):
+            continue
+
         saved_included_file = scope.get(_INCLUDED_FILE)
         pattern = os.path.join(conf_path, conf_file)
 
