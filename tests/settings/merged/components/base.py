@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Django settings for example project.
 
 DEBUG = True

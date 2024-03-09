@@ -5,6 +5,8 @@ Easily override and modify settings. Use wildcards and optional
 settings files.
 """
 
+from __future__ import annotations
+
 import glob
 import inspect
 import os
@@ -39,11 +41,14 @@ class _Optional(str):  # noqa: WPS600
     """
     Wrap a file path with this class to mark it as optional.
 
-    Optional paths don't raise an :class:`IOError` if file is not found.
+    Optional paths don't raise an :class:`OSError` if file is not found.
     """
 
 
-def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
+def include(  # noqa: WPS210, WPS231, C901
+    *args: str,
+    scope: dict[str, typing.Any] | None = None,
+) -> None:
     """
     Used for including Django project settings from multiple files.
 
@@ -52,7 +57,7 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
         **kwargs: Settings context: ``scope=globals()`` or ``None``.
 
     Raises:
-        IOError: if a required settings file is not found.
+        OSError: if a required settings file is not found.
 
     Usage example:
 
@@ -71,10 +76,10 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
     """
     # we are getting globals() from previous frame
     # globals - it is caller's globals()
-    scope = kwargs.pop('scope', inspect.stack()[1][0].f_globals)
+    scope = scope or inspect.stack()[1][0].f_globals
 
     scope.setdefault('__included_files__', [])
-    included_files = scope.get('__included_files__')
+    included_files = scope.get('__included_files__', [])
 
     including_file = scope.get(
         _INCLUDED_FILE,
@@ -90,7 +95,7 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
         # (unless file is optional)
         files_to_include = glob.glob(pattern)
         if not files_to_include and not isinstance(conf_file, _Optional):
-            raise IOError('No such file: {0}'.format(pattern))
+            raise OSError('No such file: {0}'.format(pattern))
 
         for included_file in files_to_include:
             included_file = os.path.abspath(included_file)  # noqa: WPS440
@@ -114,7 +119,9 @@ def include(*args: str, **kwargs) -> None:  # noqa: WPS210, WPS231, C901
             )
 
             spec = spec_from_file_location(module_name, included_file)
-            module = module_from_spec(spec)  # type: ignore
+            # This is only needed for mypy:
+            assert spec is not None  # noqa: S101
+            module = module_from_spec(spec)
             sys.modules[module_name] = module
         if saved_included_file:
             scope[_INCLUDED_FILE] = saved_included_file

@@ -8,8 +8,8 @@ _FIXTURE_VALUE = 'FIXTURE_VALUE'
 
 
 def test_missing_file_error(scope):
-    """This test covers the IOError, when file does not exist."""
-    with pytest.raises(IOError, match='does-not-exist.py'):
+    """This test covers the OSError, when file does not exist."""
+    with pytest.raises(OSError, match='does-not-exist.py'):
         include('does-not-exist.py', scope=scope)
 
 
