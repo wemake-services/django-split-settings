@@ -11,7 +11,7 @@ We follow Semantic Version.
 - Adds `python3.11` and `python3.12` support
 - Adds `django5.0` support
 - Uses `OSError` instead of `IOError` alias
-- Converts `include(**kwargs)` to `include(scope=...)`,
+- Converts `include(*args, **kwargs)` to `include(*args, scope=...)`,
   because other kwargs were not supported anyway
 
 
