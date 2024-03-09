@@ -3,6 +3,18 @@
 We follow Semantic Version.
 
 
+## 1.3.0
+
+### Features
+
+- Drops `python3.8` support
+- Adds `python3.11` and `python3.12` support
+- Adds `django5.0` support
+- Uses `OSError` instead of `IOError` alias
+- Converts `include(*args, **kwargs)` to `include(*args, scope=...)`,
+  because other kwargs were not supported anyway
+
+
 ## 1.2.0
 
 ### Features
