@@ -61,7 +61,7 @@ nitpick = "^0.35"
 doc8 = "^1.1"
 
 pytest = "^8.0"
-pytest-cov = "^4.1"
+pytest-cov = ">=4.1,<6.0"
 pytest-randomly = "^3.12"
 
 [tool.poetry.group.docs]
