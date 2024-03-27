@@ -53,12 +53,16 @@ that contains all the files.
 Here's a minimal example:
 
 ```python
+from os import environ
+
 from split_settings.tools import optional, include
+
+ENV = environ.get('ENV', 'local')
 
 include(
     'components/base.py',
     'components/database.py',
-    optional('local_settings.py')
+    optional('local_settings.py' if ENV == 'local' else None),
 )
 ```
 
