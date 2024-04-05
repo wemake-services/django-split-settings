@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-split-settings"
-version = "1.3.0"
+version = "1.3.1"
 description = "Organize Django settings into multiple files and directories. Easily override and modify settings. Use wildcards and optional settings files."
 authors = [
   "sobolevn <mail@sobolevn.me>",

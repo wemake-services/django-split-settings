@@ -3,6 +3,13 @@
 We follow Semantic Version.
 
 
+## 1.3.1
+
+### Bugfixes
+
+- Fixes getting the last stack item performance #532
+
+
 ## 1.3.0
 
 ### Features
