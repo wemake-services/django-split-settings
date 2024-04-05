@@ -8,7 +8,6 @@ settings files.
 from __future__ import annotations
 
 import glob
-import inspect
 import os
 import sys
 import typing
@@ -76,7 +75,7 @@ def include(  # noqa: WPS210, WPS231, C901
     """
     # we are getting globals() from previous frame
     # globals - it is caller's globals()
-    scope = scope or inspect.stack()[1][0].f_globals
+    scope = scope or sys._getframe(1).f_globals  # noqa: WPS437
 
     scope.setdefault('__included_files__', [])
     included_files = scope.get('__included_files__', [])
