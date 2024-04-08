@@ -55,7 +55,7 @@ django = [
 
 mypy = "^1.9"
 wemake-python-styleguide = "^0.18"
-flake8-pytest-style = "^1.5"
+flake8-pytest-style = ">=1.5,<3.0"
 nitpick = "^0.35"
 
 doc8 = "^1.1"
