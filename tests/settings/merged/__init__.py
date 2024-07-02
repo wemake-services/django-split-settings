@@ -16,6 +16,9 @@ include(
     # Missing file:
     optional('components/missing_file.py'),
 
+    # Conditional inclusion:
+    optional('components/conditional.py' if False else None),  # noqa: WPS314
+
     # Scope:
     scope=globals(),  # noqa: WPS421
 )
