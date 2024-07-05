@@ -3,6 +3,13 @@
 We follow Semantic Version.
 
 
+## 1.3.2
+
+### Bugfixes
+
+- Do not fail on `include(optional(None))`
+
+
 ## 1.3.1
 
 ### Bugfixes

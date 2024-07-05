@@ -53,7 +53,7 @@ def include(  # noqa: WPS210, WPS231, C901
 
     Args:
         *args: File paths (``glob`` - compatible wildcards can be used).
-        **kwargs: Settings context: ``scope=globals()`` or ``None``.
+        scope: Settings context (``globals()`` or ``None``).
 
     Raises:
         OSError: if a required settings file is not found.
@@ -87,6 +87,9 @@ def include(  # noqa: WPS210, WPS231, C901
     conf_path = os.path.dirname(including_file)
 
     for conf_file in args:
+        if isinstance(conf_file, _Optional) and not conf_file:
+            continue  # skip empty optional values
+
         saved_included_file = scope.get(_INCLUDED_FILE)
         pattern = os.path.join(conf_path, conf_file)
 
