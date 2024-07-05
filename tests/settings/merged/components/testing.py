@@ -4,7 +4,7 @@ import os
 STATIC_ROOT = 'test_folder'
 
 
-class TestingConfiguration(object):
+class TestingConfiguration:
     """Test class."""
 
     def __init__(self, testing_dir):

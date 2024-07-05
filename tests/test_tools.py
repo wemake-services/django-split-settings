@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from split_settings.tools import include
+from split_settings.tools import include, optional
 
 _FIXTURE_VALUE = 'FIXTURE_VALUE'
 
@@ -58,3 +58,12 @@ def test_caller_scope_automatically(fixture_file):
     include(fixture_file)
 
     assert _FIXTURE_VALUE in globals()  # noqa: WPS421
+
+
+def test_optional_none(fixture_file):
+    """
+    Tests that calling optional on `None` and including the result is fine.
+
+    Previously it used to raise an error.
+    """
+    include(optional(None))  # should not fail

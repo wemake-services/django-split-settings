@@ -16,13 +16,13 @@ class Scope(dict):  # noqa: WPS600
 
 # Different util functions:
 
-@pytest.fixture()
+@pytest.fixture
 def scope():
     """This fixture just returns the new instance of the test Scope class."""
     return Scope()
 
 
-@pytest.fixture()
+@pytest.fixture
 def fixture_file():
     """This fixture return a path to the test fixture file."""
     return os.path.join(
@@ -34,21 +34,21 @@ def fixture_file():
 
 # Settings files:
 
-@pytest.fixture()
+@pytest.fixture
 def merged():
     """This fixture returns basic merged settings example."""
     from tests.settings import merged as _merged  # noqa: WPS433
     return _merged
 
 
-@pytest.fixture()
+@pytest.fixture
 def stacked():
     """This fixture returns stacked settings example."""
     from tests.settings import stacked as _stacked  # noqa: WPS433
     return _stacked
 
 
-@pytest.fixture()
+@pytest.fixture
 def recursion():
     """This fixture returns recursion settings example."""
     from tests.settings import recursion as _recursion  # noqa: WPS433
