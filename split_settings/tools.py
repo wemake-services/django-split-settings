@@ -118,7 +118,10 @@ def include(  # noqa: WPS210, WPS231, C901
                     )
                 elif included_file.endswith('.pyc'):
                     to_compile.seek(16)  # Skip .pyc header.
-                    compiled_code = marshal.load(to_compile)
+                    try:
+                        compiled_code = marshal.load(to_compile)
+                    except (EOFError, ValueError, TypeError) as exc:
+                        raise ValueError('Could not load compiled code file: {0}'.format(included_file)) from exc
                     if not isinstance(compiled_code, types.CodeType):
                         raise ValueError('Invalid compiled code file: {0}'.format(included_file))
                 else:
