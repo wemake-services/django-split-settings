@@ -1,6 +1,8 @@
 """This file contains different utils and fixtures."""
 
+from compileall import compile_file
 import os
+from pathlib import Path
 
 import pytest
 
@@ -32,13 +34,53 @@ def fixture_file():
     )
 
 
+@pytest.fixture
+def fixture_file_bad_pyc():
+    """This fixture return a path to the test fixture file."""
+
+    return os.path.join(
+        'settings',
+        'basic',
+        'fixture_bad_pyc.pyc',
+    )
+
+
+@pytest.fixture
+def fixture_file_unsupported():
+    """This fixture return a path to the test fixture file."""
+
+    return os.path.join(
+        'settings',
+        'basic',
+        'fixture_unsupported.json',
+    )
+
+
 # Settings files:
 
 @pytest.fixture
 def merged():
     """This fixture returns basic merged settings example."""
+
+    rel_path = os.path.join('settings', 'merged', 'components', 'database.py')
+    py_file = Path(__file__).parent.absolute() /  rel_path
+
+    # Compile the Python file to a .pyc file.
+    pyc_file = py_file.with_suffix('.pyc')
+    compile_file(py_file, legacy=True)
+
+    # Back up the Python file to a .bak file.
+    bak_file = py_file.with_suffix('.bak')
+    py_file.rename(bak_file)
+
     from tests.settings import merged as _merged  # noqa: WPS433
-    return _merged
+    yield _merged
+
+    # Delete the .pyc file after it has served its purpose.
+    pyc_file.unlink()
+
+    # Restore the .py file from backup.
+    bak_file.rename(py_file)
 
 
 @pytest.fixture

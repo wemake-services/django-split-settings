@@ -7,6 +7,9 @@ __pycache__/
 *.py[cod]
 .mypy_cache/
 
+# This file is allowed specifically because it is a required fixture.
+!tests/settings/basic/fixture_bad_pyc.pyc
+
 # C extensions
 *.so
 

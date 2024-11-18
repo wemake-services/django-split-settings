@@ -67,3 +67,21 @@ def test_optional_none(fixture_file):
     Previously it used to raise an error.
     """
     include(optional(None))  # should not fail
+
+
+def test_bad_pyc_file(scope, fixture_file_bad_pyc):
+    """
+    Tests that a bad `.pyc` file raises a `ValueError`.
+    """
+
+    with pytest.raises(ValueError, match=fixture_file_bad_pyc):
+        include(fixture_file_bad_pyc, scope=scope)
+
+
+def test_unsupported_file(scope, fixture_file_unsupported):
+    """
+    Tests that an unsupported file extension raises a `ValueError`.
+    """
+
+    with pytest.raises(ValueError, match=fixture_file_unsupported):
+        include(fixture_file_unsupported, scope=scope)

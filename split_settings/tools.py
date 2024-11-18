@@ -8,8 +8,10 @@ settings files.
 from __future__ import annotations
 
 import glob
+import marshal
 import os
 import sys
+import types
 import typing
 from importlib.util import module_from_spec, spec_from_file_location
 
@@ -57,6 +59,8 @@ def include(  # noqa: WPS210, WPS231, C901
 
     Raises:
         OSError: if a required settings file is not found.
+        ValueError: if a compiled code file could not be loaded.
+        ValueError: if the patterns match files other than py and pyc.
 
     Usage example:
 
@@ -108,10 +112,20 @@ def include(  # noqa: WPS210, WPS231, C901
 
             scope[_INCLUDED_FILE] = included_file
             with open(included_file, 'rb') as to_compile:
-                compiled_code = compile(  # noqa: WPS421
-                    to_compile.read(), included_file, 'exec',
-                )
-                exec(compiled_code, scope)  # noqa: S102, WPS421
+                if included_file.endswith('.py'):
+                    compiled_code = compile(  # noqa: WPS421
+                        to_compile.read(), included_file, 'exec',
+                    )
+                elif included_file.endswith('.pyc'):
+                    to_compile.seek(16)  # Skip .pyc header.
+                    compiled_code = marshal.load(to_compile)
+                    if not isinstance(compiled_code, types.CodeType):
+                        raise ValueError('Invalid compiled code file: {0}'.format(included_file))
+                else:
+                    raise ValueError("Unsupported extension: {0}".format(included_file))
+
+                if compiled_code:
+                    exec(compiled_code, scope)  # noqa: S102, WPS421
 
             # Adds dummy modules to sys.modules to make runserver autoreload
             # work with settings components:

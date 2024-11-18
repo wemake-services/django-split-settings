@@ -7,7 +7,7 @@ include(
     'components/apps_middleware.py',
     'components/static.py',
     'components/templates.py',
-    'components/database.py',
+    'components/database.pyc',
     'components/logging.py',
 
     # Override settings for testing:

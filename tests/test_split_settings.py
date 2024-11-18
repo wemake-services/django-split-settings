@@ -3,6 +3,7 @@ def test_merge(merged):
     """Test that all values from settings are present."""
     assert merged.SECRET_KEY
     assert merged.STATIC_ROOT
+    assert merged.DATABASES['default']['NAME'] == 'test.db'
 
 
 def test_override(merged, monkeypatch):
