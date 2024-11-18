@@ -45,17 +45,6 @@ def fixture_file_bad_pyc():
     )
 
 
-@pytest.fixture
-def fixture_file_unsupported():
-    """This fixture return a path to the test fixture file."""
-
-    return os.path.join(
-        'settings',
-        'basic',
-        'fixture_unsupported.json',
-    )
-
-
 # Settings files:
 
 @pytest.fixture
