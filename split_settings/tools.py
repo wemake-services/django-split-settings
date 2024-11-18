@@ -125,7 +125,7 @@ def include(  # noqa: WPS210, WPS231, C901
                     if not isinstance(compiled_code, types.CodeType):
                         raise ValueError('Invalid compiled code file: {0}'.format(included_file))
                 else:
-                    raise ValueError("Unsupported extension: {0}".format(included_file))
+                    raise ValueError('Unsupported extension: {0}'.format(included_file))
 
                 if compiled_code:
                     exec(compiled_code, scope)  # noqa: S102, WPS421
