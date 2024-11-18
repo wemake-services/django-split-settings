@@ -38,11 +38,17 @@ def fixture_file():
 def fixture_file_bad_pyc():
     """This fixture return a path to the test fixture file."""
 
-    return os.path.join(
+    rel_path = os.path.join(
         'settings',
         'basic',
         'fixture_bad_pyc.pyc',
     )
+    path = Path(__file__).parent / rel_path
+    path.write_text("This is not a valid .pyc file.")
+
+    yield rel_path
+
+    path.unlink()
 
 
 # Settings files:
