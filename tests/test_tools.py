@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from split_settings.tools import include, optional
+from split_settings.tools import include, optional, compiled
 
 _FIXTURE_VALUE = 'FIXTURE_VALUE'
 
@@ -75,4 +75,14 @@ def test_bad_pyc_file(scope, fixture_file_bad_pyc):
     """
 
     with pytest.raises(ValueError, match=fixture_file_bad_pyc):
-        include(fixture_file_bad_pyc, scope=scope)
+        include(compiled(fixture_file_bad_pyc), scope=scope)
+
+
+def test_compiled_but_not_pyc_file(scope, fixture_file):
+    """
+    Tests that a `compiled` file without a `.pyc` extension raises a
+    `ValueError`.
+    """
+
+    with pytest.raises(ValueError, match=fixture_file):
+        include(compiled(fixture_file), scope=scope)

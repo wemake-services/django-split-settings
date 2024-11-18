@@ -45,6 +45,70 @@ class _Optional(str):  # noqa: WPS600
     Optional paths don't raise an :class:`OSError` if file is not found.
     """
 
+def compiled(filename: str) -> _Compiled:
+    """
+    This function is used to get a compiled file path.
+
+    Args:
+        filename: the filename to be compiled.
+
+    Returns:
+        New instance of :class:`Compiled`.
+
+    Raises:
+        ValueError: if the name is not a compiled file.
+    """
+    if not filename.endswith('.pyc'):
+        raise ValueError('Expected a Python compiled file: {0}'.format(filename))
+
+    return _Compiled(filename)
+
+
+class _Compiled(str):  # noqa: WPS600
+    """
+    Wrap a file path with this class to mark it as compiled.
+
+    A compiled instance is expected to be a Python compiled file
+    (``.pyc``) and will raise :class:`ValueError` if it isn't.
+    """
+
+
+def _load_py(included_file: str) -> types.CodeType:
+    """
+    Compile the given file into a Python AST that can then be passed to `exec`.
+
+    Args:
+        included_file: the file to be compiled.
+
+    Returns:
+        The compiled code.
+    """
+    with open(included_file, 'rb') as to_compile:
+        return compile(  # noqa: WPS421
+            to_compile.read(), included_file, 'exec',
+        )
+
+
+def _load_pyc(included_file: str):
+    """
+    Load a compiled Python code file. By unmarshalling it, one can recover the
+    AST that can then be passed to `exec`.
+
+    Args:
+        included_file: the file to be loaded.
+
+    Returns:
+        The compiled code.
+    """
+    with open(included_file, 'rb') as to_compile:
+        to_compile.seek(16)  # Skip .pyc header.
+        try:
+            compiled_code = marshal.load(to_compile)
+        except (EOFError, ValueError, TypeError) as exc:
+            raise ValueError('Could not load Python compiled file: {0}'.format(included_file)) from exc
+
+    return compiled_code
+
 
 def include(  # noqa: WPS210, WPS231, C901
     *args: str,
@@ -59,8 +123,7 @@ def include(  # noqa: WPS210, WPS231, C901
 
     Raises:
         OSError: if a required settings file is not found.
-        ValueError: if a compiled code file could not be loaded.
-        ValueError: if the patterns match files other than py and pyc.
+        ValueError: if a Python compiled file could not be loaded.
 
     Usage example:
 
@@ -111,24 +174,11 @@ def include(  # noqa: WPS210, WPS231, C901
             included_files.append(included_file)
 
             scope[_INCLUDED_FILE] = included_file
-            with open(included_file, 'rb') as to_compile:
-                if included_file.endswith('.py'):
-                    compiled_code = compile(  # noqa: WPS421
-                        to_compile.read(), included_file, 'exec',
-                    )
-                elif included_file.endswith('.pyc'):
-                    to_compile.seek(16)  # Skip .pyc header.
-                    try:
-                        compiled_code = marshal.load(to_compile)
-                    except (EOFError, ValueError, TypeError) as exc:
-                        raise ValueError('Could not load compiled code file: {0}'.format(included_file)) from exc
-                    if not isinstance(compiled_code, types.CodeType):
-                        raise ValueError('Invalid compiled code file: {0}'.format(included_file))
-                else:
-                    raise ValueError('Unsupported extension: {0}'.format(included_file))
-
-                if compiled_code:
-                    exec(compiled_code, scope)  # noqa: S102, WPS421
+            if isinstance(conf_file, _Compiled):
+                compiled_code = _load_pyc(included_file)
+            else:
+                compiled_code = _load_py(included_file)
+            exec(compiled_code, scope)  # noqa: S102, WPS421
 
             # Adds dummy modules to sys.modules to make runserver autoreload
             # work with settings components:
