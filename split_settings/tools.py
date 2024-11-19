@@ -94,7 +94,7 @@ def _load_py(included_file: str) -> types.CodeType:
         )
 
 
-def _load_pyc(included_file: str):
+def _load_pyc(included_file: str) -> types.CodeType:
     """
     Load a Python compiled file that can be unmarshalled to an AST.
 
