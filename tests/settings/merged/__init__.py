@@ -1,4 +1,4 @@
-from split_settings.tools import include, optional, compiled
+from split_settings.tools import compiled, include, optional
 
 include(
     # Components:
@@ -17,7 +17,7 @@ include(
     optional('components/missing_file.py'),
 
     # Missing compiled file
-    optional(compiled("components/missing_file.pyc")),
+    optional(compiled('components/missing_file.pyc')),
 
     # Scope:
     scope=globals(),  # noqa: WPS421

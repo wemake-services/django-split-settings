@@ -45,6 +45,7 @@ class _Optional(str):  # noqa: WPS600
     Optional paths don't raise an :class:`OSError` if file is not found.
     """
 
+
 def compiled(filename: str) -> _Compiled:
     """
     This function is used to get a compiled file path.
@@ -59,7 +60,9 @@ def compiled(filename: str) -> _Compiled:
         ValueError: if the name is not a compiled file.
     """
     if not filename.endswith('.pyc'):
-        raise ValueError('Expected a Python compiled file: {0}'.format(filename))
+        raise ValueError(
+            'Expected a Python compiled file: {0}'.format(filename)
+        )
 
     return _Compiled(filename)
 
@@ -75,7 +78,9 @@ class _Compiled(str):  # noqa: WPS600
 
 def _load_py(included_file: str) -> types.CodeType:
     """
-    Compile the given file into a Python AST that can then be passed to `exec`.
+    Compile the given file into a Python AST.
+
+    This AST can then be passed to `exec`.
 
     Args:
         included_file: the file to be compiled.
@@ -91,21 +96,32 @@ def _load_py(included_file: str) -> types.CodeType:
 
 def _load_pyc(included_file: str):
     """
-    Load a compiled Python code file. By unmarshalling it, one can recover the
-    AST that can then be passed to `exec`.
+    Load a Python compiled file that can be unmarshalled to an AST.
+
+    This AST can then be passed to `exec`.
 
     Args:
-        included_file: the file to be loaded.
+        included_file: the file to be loaded and unmarshalled.
 
     Returns:
         The compiled code.
     """
+
+    # Python compiled files have a header before the marshalled code.
+    # This header can be different sizes in different Python versions,
+    # but it is 16 bytes in all versions supported by this package.
+    PYC_HEADER_SIZE = 16
+
     with open(included_file, 'rb') as to_compile:
-        to_compile.seek(16)  # Skip .pyc header.
+        to_compile.seek(PYC_HEADER_SIZE)  # Skip .pyc header.
         try:
-            compiled_code = marshal.load(to_compile)
+            compiled_code = marshal.load(to_compile)  # noqa: S302
         except (EOFError, ValueError, TypeError) as exc:
-            raise ValueError('Could not load Python compiled file: {0}'.format(included_file)) from exc
+            raise ValueError(
+                'Could not load Python compiled file: {0}'.format(
+                    included_file
+                )
+            ) from exc
 
     return compiled_code
 
