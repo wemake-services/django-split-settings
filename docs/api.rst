@@ -1,8 +1,17 @@
 API
 ===
 
-.. automodule:: split_settings.tools
+.. automodule:: split_settings.wrappers
   :members:
 
-  .. autoclass:: _Optional
+  .. autoclass:: Entry
+    :members:
+
+  .. autoclass:: Compiled
+    :members:
+
+  .. autoclass:: OneOf
+    :members:
+
+  .. autoclass:: Optional
     :members:
