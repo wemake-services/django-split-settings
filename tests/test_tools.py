@@ -2,15 +2,51 @@ import os
 
 import pytest
 
-from split_settings.tools import compiled, include, optional
+from split_settings.tools import compiled, include, one_of, optional
 
 _FIXTURE_VALUE = 'FIXTURE_VALUE'
 
 
 def test_missing_file_error(scope):
     """This test covers the OSError, when file does not exist."""
-    with pytest.raises(OSError, match='does-not-exist.py'):
+    with pytest.raises(OSError, match='No such file'):
         include('does-not-exist.py', scope=scope)
+
+
+def test_compiled_file(scope, fixture_file_pyc):
+    """This test checks that compiled files can be included."""
+    include(compiled(fixture_file_pyc), scope=scope)
+
+    assert _FIXTURE_VALUE in scope
+
+
+def test_one_of(scope, fixture_file):
+    """This test checks that files can be included as a chain."""
+    include(one_of('skip-me.py', fixture_file), scope=scope)
+
+    assert _FIXTURE_VALUE in scope
+
+
+def test_one_of_compiled_file(scope, fixture_file_pyc):
+    """This test checks that compiled files can be included as a chain."""
+    include(one_of('skip-me.py', compiled(fixture_file_pyc)), scope=scope)
+
+    assert _FIXTURE_VALUE in scope
+
+
+def test_unwrapped_pyc_error(scope, fixture_file_pyc):
+    """This test checks that .pyc files not wrapped in compiled raise errors."""
+    with pytest.raises(ValueError, match='Expected a Python source file'):
+        include(fixture_file_pyc, scope=scope)
+
+
+def test_unwrapped_pyc_in_glob_error(scope, fixture_file, fixture_file_pyc):
+    """This test checks that .pyc files not wrapped in compiled raise errors."""
+    with pytest.raises(
+        ValueError,
+        match='A Python compiled file matched the pattern',
+    ):
+        include('{0}*'.format(fixture_file), scope=scope)
 
 
 def test_keys_count(scope, fixture_file):

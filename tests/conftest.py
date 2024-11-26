@@ -1,8 +1,8 @@
 """This file contains different utils and fixtures."""
 
+import os
 from compileall import compile_file
 from pathlib import Path
-import os
 
 import pytest
 
@@ -32,6 +32,21 @@ def fixture_file():
         'basic',
         'fixture_to_include.py',
     )
+
+
+@pytest.fixture
+def fixture_file_pyc():
+    """This fixture return a path to the test fixture file."""
+    rel_path = os.path.join('settings', 'basic', 'fixture_to_include.pyc')
+    pyc_file = Path(__file__).parent.absolute() / rel_path
+    # Compile the Python file to a .pyc file.
+    py_file = pyc_file.with_suffix('.py')
+    compile_file(py_file, legacy=True)
+
+    yield rel_path
+
+    # Delete the .pyc file after it has served its purpose.
+    pyc_file.unlink()
 
 
 @pytest.fixture

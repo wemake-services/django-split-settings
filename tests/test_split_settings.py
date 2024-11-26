@@ -4,6 +4,7 @@ def test_merge(merged):
     assert merged.SECRET_KEY
     assert merged.STATIC_ROOT
     assert merged.DATABASES['default']['NAME'] == 'test.db'
+    assert merged.DIRECTION_CHOICE == 'right'
 
 
 def test_override(merged, monkeypatch):

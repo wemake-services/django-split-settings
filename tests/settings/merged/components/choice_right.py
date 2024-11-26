@@ -1,0 +1,1 @@
+DIRECTION_CHOICE = 'right'
