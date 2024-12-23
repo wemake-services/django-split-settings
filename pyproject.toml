@@ -80,4 +80,4 @@ build-backend = "poetry.masonry.api"
 
 
 [tool.nitpick]
-style = "https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/master/styles/nitpick-style-wemake.toml"
+style = "https://raw.githubusercontent.com/wemake-services/wemake-python-styleguide/0.19.2/styles/nitpick-style-wemake.toml"
