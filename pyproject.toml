@@ -41,7 +41,7 @@ classifiers = [
   "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 
-[tool.poetry.urls]
+[project.urls]
 "Funding" = "https://github.com/sponsors/wemake-services"
 
 [tool.poetry.dependencies]
