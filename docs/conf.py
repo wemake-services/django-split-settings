@@ -13,7 +13,10 @@
 import os
 import sys
 
-import tomli
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 
 sys.path.insert(0, os.path.abspath('..'))
 
@@ -22,7 +25,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 def _get_project_meta():
     with open('../pyproject.toml', mode='rb') as pyproject:
-        return tomli.load(pyproject)['tool']['poetry']
+        return tomllib.load(pyproject)['tool']['poetry']
 
 
 pkg_meta = _get_project_meta()
