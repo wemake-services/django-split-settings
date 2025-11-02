@@ -8,7 +8,7 @@ We use [poetry](https://github.com/sdispater/poetry) to manage the dependencies.
 To install them you would need to run `install` command:
 
 ```bash
-poetry install
+poetry install --no-root
 ```
 
 To activate your `virtualenv` run `poetry shell`.
@@ -41,7 +41,7 @@ We use `mypy` to run type checks on our code.
 To use it:
 
 ```bash
-mypy django_split_settings
+mypy split_settings
 ```
 
 This step is mandatory during the CI.

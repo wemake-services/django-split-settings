@@ -1,21 +1,18 @@
-[tool.poetry]
+[project]
 name = "django-split-settings"
 version = "1.3.2"
 description = "Organize Django settings into multiple files and directories. Easily override and modify settings. Use wildcards and optional settings files."
 authors = [
-  "sobolevn <mail@sobolevn.me>",
-  "Visa Kopu",
-  "Antti Kaihola",
+  { name = "sobolevn", email = "mail@sobolevn.me" },
+  { name = "Visa Kopu" },
+  { name = "Antti Kaihola" }
 ]
-license = "BSD-2-Clause"
+license = { text = "BSD-2-Clause" }
+readme = "README.md"
 packages = [
   { include = "split_settings" }
 ]
-
-readme = "README.md"
-
-repository = "https://github.com/sobolevn/django-split-settings"
-homepage = "https://django-split-settings.readthedocs.io"
+requires-python = ">=3.9"
 
 keywords = [
   "django",
@@ -44,7 +41,9 @@ classifiers = [
 ]
 
 [project.urls]
-"Funding" = "https://github.com/sponsors/wemake-services"
+Homepage = "https://django-split-settings.readthedocs.io"
+Repository = "https://github.com/sobolevn/django-split-settings"
+Funding = "https://github.com/sponsors/wemake-services"
 
 [tool.poetry.dependencies]
 python = "^3.9"
