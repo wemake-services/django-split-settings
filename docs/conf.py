@@ -25,18 +25,18 @@ sys.path.insert(0, os.path.abspath('..'))
 
 def _get_project_meta():
     with open('../pyproject.toml', mode='rb') as pyproject:
-        return tomllib.load(pyproject)['tool']['poetry']
+        return tomllib.load(pyproject)['project']
 
 
 pkg_meta = _get_project_meta()
-project = str(pkg_meta['name'])
-copyright = '2013, 2General Oy'  # noqa: WPS125
-author = 'Nikita Sobolev'
-
+project = str(pkg_meta.get('name', 'django-split-settings'))
 # The short X.Y version
-version = str(pkg_meta['version'])
+version = str(pkg_meta.get('version', '0.0.1'))
 # The full version, including alpha/beta/rc tags
 release = version
+
+copyright = '2013, 2General Oy'  # noqa: WPS125
+author = 'Nikita Sobolev'
 
 
 # -- General configuration ---------------------------------------------------
@@ -67,6 +67,10 @@ autodoc_member_order = 'bysource'
 
 autodoc_member_order = 'bysource'
 autodoc_default_flags = {}
+
+autodoc_default_options = {
+    'show-inheritance': True,
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
