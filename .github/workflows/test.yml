@@ -20,15 +20,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ['3.10', '3.11', '3.12', '3.13']
         django-version:
           - 'Django~=4.2.0'
-          - 'Django~=5.0.0'
+          - 'Django~=5.2.0'
         include:
-          - python-version: '3.9'
-            django-version: 'Django~=4.1.0'
-          - python-version: '3.12'
-            django-version: 'Django~=4.1.0'
+          - python-version: '3.10'
+            django-version: 'Django~=4.2.0'
+          - python-version: '3.13'
+            django-version: 'Django~=5.2.0'
 
     steps:
     - uses: actions/checkout@v4

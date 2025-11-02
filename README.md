@@ -30,6 +30,7 @@ While this package will most likely work with the most versions of `django`, we 
 - 4.2
 - 5.0
 - 5.1
+- 5.2
 
 This package has no dependencies itself.
 
