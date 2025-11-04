@@ -24,8 +24,15 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 def _get_project_meta():
-    with open('../pyproject.toml', mode='rb') as pyproject:
-        return tomllib.load(pyproject)['project']
+    import os
+    toml_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'pyproject.toml'))
+    with open(toml_path, 'rb') as f:
+        data = tomllib.load(f)
+    if 'project' in data:
+        return data['project']
+    elif 'tool' in data and 'poetry' in data['tool']:
+        return data['tool']['poetry']
+    raise KeyError("No [project] or [tool.poetry] section found in pyproject.toml")
 
 
 pkg_meta = _get_project_meta()
