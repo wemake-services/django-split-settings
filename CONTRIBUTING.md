@@ -8,7 +8,7 @@ We use [poetry](https://github.com/sdispater/poetry) to manage the dependencies.
 To install them you would need to run `install` command:
 
 ```bash
-poetry install --no-root
+poetry install
 ```
 
 To activate your `virtualenv` run `poetry shell`.
