@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.10', '3.11', '3.12', '3.13']
+        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
         django-version:
           - 'Django~=4.2.0'
           - 'Django~=5.2.0'
@@ -47,7 +47,7 @@ jobs:
     - name: Install dependencies
       run: |
         poetry run pip install --upgrade pip setuptools
-        poetry install --no-root
+        poetry install
 
         poetry run pip install --upgrade "${{ matrix.django-version }}"
 

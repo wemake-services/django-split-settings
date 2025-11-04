@@ -14,9 +14,9 @@ import os
 import sys
 
 try:
-    import tomllib
+    import tomllib  # noqa: WPS433
 except ImportError:
-    import tomli as tomllib
+    import tomli as tomllib  # noqa: WPS433, WPS440
 
 sys.path.insert(0, os.path.abspath('..'))
 
