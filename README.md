@@ -31,6 +31,7 @@ While this package will most likely work with the most versions of `django`, we 
 - 5.0
 - 5.1
 - 5.2
+- 6.0
 
 This package has no dependencies itself.
 

@@ -3,6 +3,14 @@
 We follow Semantic Version.
 
 
+## Unreleased
+
+### Features
+
+- Adds `python3.14` support
+- Adds `django6.0` support
+
+
 ## 1.3.2
 
 ### Bugfixes

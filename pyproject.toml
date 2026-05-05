@@ -35,6 +35,7 @@ classifiers = [
   "Framework :: Django :: 5.0",
   "Framework :: Django :: 5.1",
   "Framework :: Django :: 5.2",
+  "Framework :: Django :: 6.0",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: BSD License",
   "Operating System :: OS Independent",
@@ -50,7 +51,7 @@ classifiers = [
 python = ">=3.10,<4.0"
 
 [tool.poetry.group.dev.dependencies]
-django = ">=4.2,<5.3"
+django = ">=4.2,<6.1"
 
 mypy = "^1.10"
 wemake-python-styleguide = "^1.0"
