@@ -3,15 +3,15 @@
 
 ## Dependencies
 
-We use [poetry](https://github.com/sdispater/poetry) to manage the dependencies.
+We use [uv](https://docs.astral.sh/uv/) to manage the dependencies.
 
-To install them you would need to run `install` command:
+To install them you would need to run `sync` command:
 
 ```bash
-poetry install
+uv sync
 ```
 
-To activate your `virtualenv` run `poetry shell`.
+To activate your `virtualenv` run `source .venv/bin/activate`.
 
 
 ## Tests
