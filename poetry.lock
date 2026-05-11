@@ -389,14 +389,14 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "doc8"
-version = "1.1.2"
+version = "2.0.0"
 description = "Style checker for Sphinx (or other) RST documentation"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "doc8-1.1.2-py3-none-any.whl", hash = "sha256:e787b3076b391b8b49400da5d018bacafe592dfc0a04f35a9be22d0122b82b59"},
-    {file = "doc8-1.1.2.tar.gz", hash = "sha256:1225f30144e1cc97e388dbaf7fe3e996d2897473a53a6dae268ddde21c354b98"},
+    {file = "doc8-2.0.0-py3-none-any.whl", hash = "sha256:9862710027f793c25f9b1899150660e4bf1d4c9a6738742e71f32011e2e3f590"},
+    {file = "doc8-2.0.0.tar.gz", hash = "sha256:1267ad32758971fbcf991442417a3935c7bc9e52550e73622e0e56ba55ea1d40"},
 ]
 
 [package.dependencies]
@@ -1331,4 +1331,4 @@ pygments = ">=2.19,<3.0"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "0f3746118253765ce3e5cb95bab0bfd5828bad2eda2d46484ac90e99ee2f43c8"
+content-hash = "b2c124dcb9e89ed262fc1ce2fe6257cb8e0f1d44cc0bfb4432502d09df1bca16"
