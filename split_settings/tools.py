@@ -5,21 +5,19 @@ Easily override and modify settings. Use wildcards and optional
 settings files.
 """
 
-from __future__ import annotations
-
 import glob
 import os
 import sys
-import typing
+from typing import Any, Final
 from importlib.util import module_from_spec, spec_from_file_location
 
 __all__ = ('optional', 'include')  # noqa: WPS410
 
 #: Special magic attribute that is sometimes set by `uwsgi` / `gunicorn`.
-_INCLUDED_FILE = '__included_file__'
+_INCLUDED_FILE: Final = '__included_file__'
 
 
-def optional(filename: typing.Optional[str]) -> str:
+def optional(filename: str | None) -> str:
     """
     This function is used for compatibility reasons.
 
@@ -46,7 +44,7 @@ class _Optional(str):  # noqa: WPS600
 
 def include(  # noqa: WPS210, WPS231, C901
     *args: str,
-    scope: dict[str, typing.Any] | None = None,
+    scope: dict[str, Any] | None = None,
 ) -> None:
     """
     Used for including Django project settings from multiple files.
