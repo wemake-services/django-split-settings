@@ -39,6 +39,8 @@ jobs:
             django-version: 'Django~=5.2.0'
           - python-version: '3.14'
             django-version: 'Django~=6.0.0'
+          - python-version: '3.15'
+            django-version: 'Django~=6.1.0'
 
     steps:
     - uses: actions/checkout@v7

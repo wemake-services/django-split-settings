@@ -13,7 +13,7 @@ from importlib.util import module_from_spec, spec_from_file_location
 
 __all__ = ('optional', 'include')  # noqa: WPS410
 
-#: Special magic attribute that is sometimes set by `uwsgi` / `gunicorn`.
+# Special magic attribute that is sometimes set by `uwsgi` / `gunicorn`.
 _INCLUDED_FILE: Final = '__included_file__'
 
 
